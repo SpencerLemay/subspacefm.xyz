@@ -7,8 +7,9 @@
 const player = new IcecastMetadataPlayer("http://subspacefm.xyz:8000/subspacefm.ogg", {
   onMetadata: (metadata) => {console.log(metadata)},
   metadataTypes: ["ogg"]
-  ...options
-});
+  ...options})
+
+player.play();
 </script>
 
  <html>
