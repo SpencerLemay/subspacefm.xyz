@@ -1,21 +1,26 @@
-
+<script src="icecast-metadata-player-1.11.4.min.js"></script>
+<script>
+  const onMetadata = (metadata) => {
+    document.getElementById("metadata").innerHTML = metadata.StreamTitle;
+  };
+  const player = 
+    new IcecastMetadataPlayer(
+      "subspacefm.xyz:8000/subspacefm.ogg",
+      { onMetadata }
+    );
+</script>
 
  <html>
-  <link rel="stylesheet" href="../style/style.css">
-   
-
+ <link rel="stylesheet" href="../style/style.css">
  
-
-<audio controls autoplay>
-
-  <source src="http://subspacefm.xyz:8000/subspacefm.ogg" type="audio/ogg">
-
-
-
-</audio>
- 
-
-
+<!--<audio controls autoplay>
+ <source src="http://subspacefm.xyz:8000/subspacefm.ogg" type="audio/ogg">
+</audio>-->
+<body>
+  <button onclick="player.play();"> Play </button>
+  <button onclick="player.stop();"> Stop </button>
+  <p> Now Playing: <span id="metadata"></span> </p>
+</body>
    <a>honk</a>
    <div class="center" id="center">
    <img src="../images/eye.gif">
