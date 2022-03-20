@@ -1,12 +1,13 @@
-import IcecastMetadataPlayer from "./node_modules/icecast-metadata-player";
-
-
+<script src="./scripts/icecast-metadata-player-1.11.4.min.js"></script>
 <script>
-
-const player = new IcecastMetadataPlayer(
-  "http://subspacefm.xyz:8000/subspacefm.ogg",
-  { onMetadata: (metadata) => {console.log(metadata)} }
-);
+  const onMetadata = (metadata) => {
+    document.getElementById("metadata").innerHTML = metadata.StreamTitle;
+  };
+  const player = 
+    new IcecastMetadataPlayer(
+      "subspacefm.xyz:8000/subspacefm.ogg",
+      { onMetadata }
+    );
 </script>
 
  <html>
