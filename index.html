@@ -5,9 +5,9 @@
     document.getElementById("metadata").innerHTML = metadata.StreamTitle;
   };
 const player = new IcecastMetadataPlayer("http://subspacefm.xyz/subspacefm.ogg", {
-  onMetadata: ((metadata) => {console.log(metadata)}),
-  (metadataTypes: ["ogg"]  ...options)
-})
+  onMetadata: (metadata) => {console.log(metadata)},
+  metadataTypes: ["ogg"]  ...options}
+
 
 player.play();
 </script>
