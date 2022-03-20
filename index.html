@@ -3,11 +3,11 @@
   const onMetadata = (metadata) => {
     document.getElementById("metadata").innerHTML = metadata.StreamTitle;
   };
-  const player = 
-    new IcecastMetadataPlayer(
-      "https://dsmrad.io/stream/isics-all",
-      { onMetadata }
-    );
+const player = new IcecastMetadataPlayer("http://subspacefm.xyz:8000/subspacefm.ogg, {
+  onMetadata: (metadata) => {console.log(metadata)},
+  metadataTypes: ["ogg"]
+  ...options
+})
 </script>
 
  <html>
