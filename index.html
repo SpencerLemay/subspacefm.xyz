@@ -4,11 +4,11 @@
   const onMetadata = (metadata) => {
     document.getElementById("metadata").innerHTML = metadata.StreamTitle;
   };
-const player = new IcecastMetadataPlayer("http://subspacefm.xyz:8000/subspacefm.ogg", {
-  onMetadata: (metadata) => {console.log(metadata)},
-  ...options
-})
-
+  const player = 
+    new IcecastMetadataPlayer(
+      "http://subspacefm.xyz:8000/subspacefm.ogg",
+      { onMetadata }
+    );
 player.play();
 </script>
 
