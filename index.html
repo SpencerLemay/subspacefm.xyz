@@ -3,10 +3,24 @@
 
  <html>
  <link rel="stylesheet" href="../style/style.css">
+<script>
+navigator.serviceWorker.register('worker.min.js')	
 
+navigator.serviceWorker.addEventListener('message', event => {
+    if(event.origin != 'https://subspacefm.xyz:8443/subspacefm.ogg'){
+        return;
+    }
+    var meta = event.data.msg;
+    meta = meta.substring(meta.indexOf("'") + 1,meta.lastIndexOf("'"));
+    document.querySelector('div').innerText = meta;
+});
+
+</script>
 <audio controls autoplay>
- <source src="http://subspacefm.xyz:8000/subspacefm.ogg" type="audio/ogg">
+ <source src="https://subspacefm.xyz:8443/subspacefm.ogg" type="audio/ogg">
 </audio>
+<audio preload="none" id="aud" controls src="http://subspacefm.xyz:8000/subspacefm.ogg" type="audio/ogg">
+
 <body>
   <button onclick="player.play();"> Play </button>
   <button onclick="player.stop();"> Stop </button>
