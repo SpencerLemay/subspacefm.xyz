@@ -6,7 +6,7 @@ const icecastReader = new IcecastMetadataReader({
   },
   onMetadata: (value) => {
     // do something with the data in value.metadata
-  };,
+  };
 });
 
 const headers = myHTTPResponse.headers;
