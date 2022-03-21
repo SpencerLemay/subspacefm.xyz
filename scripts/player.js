@@ -1,4 +1,4 @@
-import { IcecastMetadataReader } from ("icecast-metadata-js");
+import { IcecastMetadataReader } from  "icecast-metadata-js";
 
 const icecastReader = new IcecastMetadataReader({
   onStream: (value) => {
