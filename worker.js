@@ -1,4 +1,4 @@
-const playerOrigin = 'https://example.com';
+const playerOrigin = 'https://subspacefm.xyz:8443/subspacefm.ogg';
 let fetchController;
 let fetchSignal = null;
 self.addEventListener('fetch', event => {
