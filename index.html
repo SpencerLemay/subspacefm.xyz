@@ -2,17 +2,6 @@
  <html>
  <link rel="stylesheet" href="../style/style.css">
 <script>
-navigator.serviceWorker.register('worker.min.js')	
-
-navigator.serviceWorker.addEventListener('message', event => {
-    if(event.origin != 'https://subspacefm.xyz'){
-        return;
-    }
-    var meta = event.data.msg;
-    meta = meta.substring(meta.indexOf("'") + 1,meta.lastIndexOf("'"));
-    document.querySelector('div').innerText = meta;
-});
-
 </script>
 <!--<audio preload="none" id="aud" controls src="https://subspacefm.xyz:8443/subspacefm.ogg" type="audio/ogg">-->
 
