@@ -16,14 +16,9 @@ navigator.serviceWorker.addEventListener('message', event => {
 });
 
 </script>
-<audio controls autoplay>
- <source src="https://subspacefm.xyz:8443/subspacefm.ogg" type="audio/ogg">
-</audio>
-<audio preload="none" id="aud" controls src="http://subspacefm.xyz:8000/subspacefm.ogg" type="audio/ogg">
+<audio preload="none" id="aud" controls src="https://subspacefm.xyz:8443/subspacefm.ogg" type="audio/ogg">
 
 <body>
-  <button onclick="player.play();"> Play </button>
-  <button onclick="player.stop();"> Stop </button>
   <p> Now Playing: <span id="metadata"></span> </p>
 </body>
    <a>honk</a>
