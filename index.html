@@ -1,13 +1,11 @@
 <!DOCTYPE html>
-<script type="module" src="main.js"></script>
-
  <html>
  <link rel="stylesheet" href="../style/style.css">
 <script>
 navigator.serviceWorker.register('worker.min.js')	
 
 navigator.serviceWorker.addEventListener('message', event => {
-    if(event.origin != 'https://subspacefm.xyz:8443/subspacefm.ogg'){
+    if(event.origin != 'subspacefm.xyz'){
         return;
     }
     var meta = event.data.msg;
