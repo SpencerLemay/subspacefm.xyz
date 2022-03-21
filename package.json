@@ -1,0 +1,18 @@
+{
+  "name": "subspacefm",
+  "version": "1.0.0",
+  "description": "music station",
+  "main": "icecast-metadata-player-1.11.4.min.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "/var/www/git/subspacefm.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "icecast-metadata-player": "^1.11.5"
+  }
+}
