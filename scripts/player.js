@@ -6,6 +6,26 @@ const icecastReader = new IcecastMetadataReader({
 });
 
 
+
+
+fetch("https://subspacefm.xyz:8443/subspacefm.ogg", {
+  method: "GET",
+  headers: {
+    "Icy-MetaData": "1",
+  }
+})
+.then(async (response) => {
+  const icecast = new IcecastReadableStream(
+    response,
+    options // see IcecastMetadataReader
+  );
+  
+  await icecast.startReading();
+});
+
+
+
+
 const responseData = response.body;
 
 for (const i of icecastReader.iterator(responseData)) {
