@@ -3,7 +3,20 @@
  <link rel="stylesheet" href="style/style.css">
   <script src="scripts/jquery-3.6.0.min.js"></script>
  <script  src="scripts/bundle.js"> </script>
+<script >
+    "https://subspacefm.xyz/stream",
+  { onMetadata: (metadata) => {console.log(metadata)} }
+);
 
+
+$("play").click(function(){
+  player.play();
+}); 
+
+$("stop").click(function(){
+  player.stop();
+}); 
+</script>
 <!--<audio controls autoplay>
   <source src="https://subspacefm.xyz:8443/subspacefm.ogg" type="audio/ogg">
 Your browser does not support the audio element.
