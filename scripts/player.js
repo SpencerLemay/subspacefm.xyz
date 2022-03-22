@@ -1,14 +1,20 @@
 debugger;
-var  IcecastMetadataReader = require('icecast-metadata-js');
+const  IcecastMetadataReader = require('icecast-metadata-js');
 
 const icecastReader = new IcecastMetadataReader({
-  onStream: (value) => {
-    // do something with the data in value.stream
-    console.log("stream" + value.stream)
-  },
-  onMetadata: (value) => {
-    // do something with the data in value.metadata
-    console.log("metadata" + value.metadata)
-
-  },
+  metadataTypes: ["icy", "ogg"]
 });
+
+
+const responseData = response.body;
+
+for (const i of icecastReader.iterator(responseData)) {
+  if (i.stream) {
+    // do something with stream data
+   console.log(i.stream);
+  }
+  if (i.metadata) {
+    // do something with metadata
+    console.log(i.metadata);
+  }
+}
