@@ -1166,23 +1166,16 @@ class Stats {
 exports.default = Stats;
 
 },{}],10:[function(require,module,exports){
-debugger;
-window.IcecastMetadataReader  = window.$ = require("icecast-metadata-js");
+"use strict";
 
-const icecastReader = new IcecastMetadataReader({
-  onStream,
-  onMetadata,
-  metadataTypes: ["ogg"]
+var _icecastMetadataJs = require("icecast-metadata-js");
+
+debugger;
+const icecastReader = new _icecastMetadataJs.IcecastMetadataReader({
+  onStream: value => {// do something with the data in value.stream
+  },
+  onMetadata: value => {// do something with the data in value.metadata
+  }
 });
 
-const responseData = response.body;
-
-for (const i of icecastReader.iterator(responseData)) {
-  if (i.stream) {
-    // do something with stream data
-  }
-  if (i.metadata) {
-    console.log(i.metadata);
-  }
-}
 },{"icecast-metadata-js":1}]},{},[10]);
