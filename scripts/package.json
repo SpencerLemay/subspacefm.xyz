@@ -4,5 +4,15 @@
     "i": "^0.3.7",
     "icecast-metadata-js": "^1.0.0",
     "npm": "^8.5.5"
-  }
+  },
+  "name": "scripts",
+  "version": "1.0.0",
+  "main": "player.js",
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "description": ""
 }
