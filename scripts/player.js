@@ -8,7 +8,7 @@ const icecastReader = new IcecastMetadataReader({
   onError,
   enableLogging: true,
   metadataTypes: ["icy"]
-  icyMetaInt: parseInt(headers.get("Icy-MetaInt")),
+  icyMetaInt: parseInt(headers.get("Icy-MetaInt"));
 });
 
 
