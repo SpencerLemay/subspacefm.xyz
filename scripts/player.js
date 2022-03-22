@@ -1,5 +1,5 @@
 debugger;
-import { IcecastMetadataReader } from "icecast-metadata-js";
+var  IcecastMetadataReader = require('icecast-metadata-js');
 
 const icecastReader = new IcecastMetadataReader({
   onStream: (value) => {

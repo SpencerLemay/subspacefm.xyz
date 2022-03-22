@@ -1166,20 +1166,19 @@ class Stats {
 exports.default = Stats;
 
 },{}],10:[function(require,module,exports){
-"use strict";
-
-var _icecastMetadataJs = require("icecast-metadata-js");
-
 debugger;
-const icecastReader = new _icecastMetadataJs.IcecastMetadataReader({
-  onStream: value => {
+var  IcecastMetadataReader = require('icecast-metadata-js');
+
+const icecastReader = new IcecastMetadataReader({
+  onStream: (value) => {
     // do something with the data in value.stream
-    console.log("stream" + value.stream);
+    console.log("stream" + value.stream)
   },
-  onMetadata: value => {
+  onMetadata: (value) => {
     // do something with the data in value.metadata
-    console.log("metadata" + value.metadata);
-  }
+    console.log("metadata" + value.metadata)
+
+  },
 });
 
 },{"icecast-metadata-js":1}]},{},[10]);
