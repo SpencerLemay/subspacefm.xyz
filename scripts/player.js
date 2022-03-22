@@ -8,7 +8,7 @@ const icecastReader = new IcecastMetadataReader({
 
 
 
-fetch("https://stream.subspacefm.xyz", {
+fetch("https://subspacefm.xyz/stream", {
   method: "GET",
   headers: {
     "Icy-MetaData": "1",
