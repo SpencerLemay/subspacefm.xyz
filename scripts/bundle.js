@@ -1172,9 +1172,13 @@ var _icecastMetadataJs = require("icecast-metadata-js");
 
 debugger;
 const icecastReader = new _icecastMetadataJs.IcecastMetadataReader({
-  onStream: value => {// do something with the data in value.stream
+  onStream: value => {
+    // do something with the data in value.stream
+    console.log("stream" + value.stream);
   },
-  onMetadata: value => {// do something with the data in value.metadata
+  onMetadata: value => {
+    // do something with the data in value.metadata
+    console.log("metadata" + value.metadata);
   }
 });
 
