@@ -5,12 +5,8 @@ const headers = myHTTPResponse.headers;
 const icecastReader = new IcecastMetadataReader({
   onStream,
   onMetadata,
-  onError,
-  enableLogging: true,
-  metadataTypes: ["icy"]
-  icyMetaInt: parseInt(headers.get("Icy-MetaInt"));
+  metadataTypes: ["ogg"]
 });
-
 
 const responseData = response.body;
 
