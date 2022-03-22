@@ -10,7 +10,7 @@ const icecastReader = new IcecastMetadataReader({
     // do something with the data in value.metadata
         console.log(value);
 
-  };
+  },
 });
 
 const headers = myHTTPResponse.headers;
