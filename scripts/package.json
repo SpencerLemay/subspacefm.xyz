@@ -1,6 +1,7 @@
 {
   "type": "module",
   "dependencies": {
+    "esmify": "^2.1.1",
     "i": "^0.3.7",
     "icecast-metadata-js": "^1.0.0",
     "npm": "^8.5.5"
@@ -8,9 +9,11 @@
   "name": "scripts",
   "version": "1.0.0",
   "main": "player.js",
-  "devDependencies": {},
+  "devDependencies": {
+    "browserify": "^17.0.0"
+  },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build": "browserify player.js -o -p esmify > bundle.js"
   },
   "author": "",
   "license": "ISC",

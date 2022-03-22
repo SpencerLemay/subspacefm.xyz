@@ -1,5 +1,5 @@
 debugger;
-import { IcecastMetadataReader } from  "@IcecastMetadataReader";
+const { IcecastMetadataReader } = require("icecast-metadata-js");
 
 const headers = myHTTPResponse.headers;
 
