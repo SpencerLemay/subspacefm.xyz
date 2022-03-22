@@ -1,11 +1,15 @@
-import { IcecastMetadataReader } from  "icecast-metadata-js";
+import { IcecastMetadataReader } from  "icecast-metadatdfgfa-js";
 
 const icecastReader = new IcecastMetadataReader({
   onStream: (value) => {
     // do something with the data in value.stream
+            console.log(value);
+
   },
   onMetadata: (value) => {
     // do something with the data in value.metadata
+        console.log(value);
+
   };
 });
 
