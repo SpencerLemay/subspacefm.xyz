@@ -1,6 +1,7 @@
 import IcecastMetadataPlayer from "icecast-metadata-player";
+window.jQuery = require('jquery');
+window.$ = global.jQuery;
 
-window.$ = $;
 var player = window.player || {};
 
 player = new IcecastMetadataPlayer(
