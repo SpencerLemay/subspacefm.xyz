@@ -16,9 +16,7 @@
 
 window.AudioContext = window.AudioContext || window.webkitAudioContext || window.mozAudioContext;
 
-var start = function() {
-    var audio = document.getElementById('audio');
-    var ctx = new AudioContext();
+var visualizerStart = function() {
     var analyser = ctx.createAnalyser();
     var audioSrc = ctx.createMediaElementSource(player.audioElement);
     // we have to connect the MediaElementSource with the analyser 
@@ -72,6 +70,6 @@ var start = function() {
     // audio.play();
 };
 
-audio.onplay = function(){
-    start();
-}
+$("#play").click(function(){
+   visualizerStart();
+}); 
