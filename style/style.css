@@ -15,6 +15,7 @@ html, body {
   width: 50%;
   border: 3px solid black;
   padding: 10px;
-  background: url('../images/navbar.gif') no-repeat center center fixed; 
+  background: rgba(0, 128, 0, 0.3)
+  /*background: url('../images/navbar.gif') no-repeat center center fixed; */
 
 }
