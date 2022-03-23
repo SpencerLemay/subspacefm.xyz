@@ -5,21 +5,19 @@ html {
        -o-background-size: cover;
        background-size: cover;
 }
-/*as god demanded*/
-html, body { 
-       max-width: 640px; 
-       max-height: 480px; 
-} 
+
 .streamplayer{
   margin: auto;
   width: 50%;
   border: 3px solid black;
   padding: 10px;
-  background: rgba(0, 128, 0, 0.3)
-  /*background: url('../images/navbar.gif') no-repeat center center fixed; */
-
+  background: rgba(0.3, 128, 0.3, 0.3)
+  background-image: url('../images/navbar.gif') 
 }
 
 img{
        object-fit: contain;
+}
+metadata{
+       color: white;
 }
