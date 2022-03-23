@@ -22577,7 +22577,7 @@ window.$ = global.jQuery;
 var player = window.player || {};
 player = new _icecastMetadataPlayer.default("https://subspacefm.xyz/stream", {
   onMetadata: metadata => {
-    console.log(metadata);
+    $("#metadata").text(metadata.StreamTitle);
   }
 });
 window.player = player;

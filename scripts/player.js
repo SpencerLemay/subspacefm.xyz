@@ -6,7 +6,7 @@ var player = window.player || {};
 
 player = new IcecastMetadataPlayer(
   "https://subspacefm.xyz/stream",
-  { onMetadata: (metadata) => {console.log(metadata)} }
+  { onMetadata: (metadata) => {$("#metadata").text(metadata.StreamTitle);} }
 );
 window.player = player;
 
