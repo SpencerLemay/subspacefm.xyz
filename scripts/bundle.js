@@ -11694,6 +11694,7 @@ player = new _icecastMetadataPlayer.default("https://subspacefm.xyz/stream", {
     console.log(metadata);
   }
 });
+window.player = player;
 $("play").click(function () {
   player.play();
 });

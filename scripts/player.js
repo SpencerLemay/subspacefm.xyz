@@ -6,7 +6,7 @@ player = new IcecastMetadataPlayer(
   "https://subspacefm.xyz/stream",
   { onMetadata: (metadata) => {console.log(metadata)} }
 );
-
+window.player = player;
 
 $("play").click(function(){
   player.play();
