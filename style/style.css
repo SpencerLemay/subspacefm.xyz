@@ -5,7 +5,11 @@ html {
        -o-background-size: cover;
        background-size: cover;
 }
-
+/*as god demanded*/
+html, body { 
+       max-width: 640px; 
+       max-height: 480px; 
+} 
 .center{
   margin: auto;
   width: 50%;
