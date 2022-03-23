@@ -42,7 +42,7 @@ img{
   bottom: 0;
   width: 5px;
   display: inline-block;
-  border: 1px solid red;
+  border: 1px solid black;
   height: 5px;
-  border-bottom: 3px solid #fff;
+  border-bottom: 3px solid #000;
 }
