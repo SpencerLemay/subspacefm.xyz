@@ -22581,11 +22581,13 @@ player = new _icecastMetadataPlayer.default("https://subspacefm.xyz/stream", {
   }
 });
 window.player = player;
-$("play").click(function () {
-  player.play();
-});
-$("stop").click(function () {
-  player.stop();
+$(function () {
+  $("play").click(function () {
+    player.play();
+  });
+  $("stop").click(function () {
+    player.stop();
+  });
 });
 
 }).call(this)}).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})

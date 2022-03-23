@@ -10,6 +10,7 @@ player = new IcecastMetadataPlayer(
 );
 window.player = player;
 
+$(function(){
 $("play").click(function(){
   player.play();
 }); 
@@ -17,3 +18,4 @@ $("play").click(function(){
 $("stop").click(function(){
   player.stop();
 }); 
+});
