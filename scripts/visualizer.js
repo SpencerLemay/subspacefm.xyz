@@ -68,10 +68,10 @@ var visualizerStart = function() {
         requestAnimationFrame(renderFrame);
     }
     renderFrame();
-    visualizerStart();
 };
 $(function(){
 
+    visualizerStart();
 
 $("#play").click(function(){
    visualizerStart();
