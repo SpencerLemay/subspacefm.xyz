@@ -1,5 +1,6 @@
 import IcecastMetadataPlayer from "icecast-metadata-player";
 
+window.$ = $;
 var player = window.player || {};
 
 player = new IcecastMetadataPlayer(
