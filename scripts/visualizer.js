@@ -71,8 +71,6 @@ var visualizerStart = function() {
 };
 $(function(){
 
-    visualizerStart();
-
 $("#play").click(function(){
    visualizerStart();
 }); 
