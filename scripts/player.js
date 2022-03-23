@@ -1,6 +1,6 @@
 import IcecastMetadataPlayer from "icecast-metadata-player";
 
-const player = window.player || {};
+var player = window.player || {};
 
 player = new IcecastMetadataPlayer(
   "https://subspacefm.xyz/stream",
