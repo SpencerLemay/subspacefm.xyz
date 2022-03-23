@@ -11688,7 +11688,8 @@ var _icecastMetadataPlayer = _interopRequireDefault(require("icecast-metadata-pl
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-const player = new _icecastMetadataPlayer.default("https://subspacefm.xyz/stream", {
+const player = window.player || {};
+player = new _icecastMetadataPlayer.default("https://subspacefm.xyz/stream", {
   onMetadata: metadata => {
     console.log(metadata);
   }

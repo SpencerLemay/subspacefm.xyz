@@ -1,7 +1,6 @@
 {
   "type": "module",
   "dependencies": {
-    "browserify-shim": "^3.8.14",
     "esmify": "^2.1.1",
     "i": "^0.3.7",
     "icecast-metadata-player": "^1.11.6",
@@ -12,17 +11,11 @@
   "version": "1.0.0",
   "main": "player.js",
   "devDependencies": {
-   "browserify": "^17.0.0"
+    "browserify": "^17.0.0"
   },
   "scripts": {
     "build": "browserify player.js -o -p esmify > bundle.js",
     "watch": "watchify player.js -o -p esmify > bundle.js"
-  },
-  "browserify-shim" : {
-    "player" : "global:player"
-  },
-  "browserify" : {
-    "transform" : [ "browserify-shim" ]
   },
   "author": "",
   "license": "ISC",
