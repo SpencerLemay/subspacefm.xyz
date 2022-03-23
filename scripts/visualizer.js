@@ -17,6 +17,7 @@
 window.AudioContext = window.AudioContext || window.webkitAudioContext || window.mozAudioContext;
 
 var visualizerStart = function() {
+   var ctx = new AudioContext();
     var analyser = ctx.createAnalyser();
     var audioSrc = ctx.createMediaElementSource(player.audioElement);
     // we have to connect the MediaElementSource with the analyser 
@@ -43,7 +44,7 @@ var visualizerStart = function() {
     gradient.addColorStop(0.5, '#ff0');
     gradient.addColorStop(0, '#f00');
     // loop
-    function renderFrame() 
+    function renderFrame() {
         var ctx = new AudioContext();
         var analyser = ctx.createAnalyser();
         var array = new Uint8Array(analyser.frequencyBinCount);
