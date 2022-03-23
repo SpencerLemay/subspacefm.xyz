@@ -69,7 +69,8 @@ var visualizerStart = function() {
     renderFrame();
     // audio.play();
 };
-
+$(function(){
 $("#play").click(function(){
    visualizerStart();
 }); 
+});
