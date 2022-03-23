@@ -45,8 +45,6 @@ var visualizerStart = function() {
     gradient.addColorStop(0, '#f00');
     // loop
     function renderFrame() {
-        var ctx = new AudioContext();
-        var analyser = ctx.createAnalyser();
         var array = new Uint8Array(analyser.frequencyBinCount);
         analyser.getByteFrequencyData(array);
         var step = Math.round(array.length / meterNum); //sample limited data from the total array
