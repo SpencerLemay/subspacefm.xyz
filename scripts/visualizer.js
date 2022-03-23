@@ -68,9 +68,11 @@ var visualizerStart = function() {
         requestAnimationFrame(renderFrame);
     }
     renderFrame();
-    // audio.play();
+    visualizerStart();
 };
 $(function(){
+
+
 $("#play").click(function(){
    visualizerStart();
 }); 
