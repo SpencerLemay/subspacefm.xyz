@@ -5,12 +5,31 @@
   <script  src="scripts/visualizer.js"> </script>
 
 <body>
- <div class="streamplayer" id="center">
-   <button class="streambtn" id="play"> Play </button>
-  <button class="streambtn" id="stop"> Stop </button>
- <canvas id="canvas" width="800" height="350"></canvas>
-  <p> Now Playing: <span class="metadata" id="metadata"></span> </p>
+
+
+
+
+
+
+   <div class="streamPlayer" id="center">
+     <table id="playerTable">
+      <tr id="playerControls">
+         <button class="streambtn" id="play"> Play </button>
+         <button class="streambtn" id="stop"> Stop </button>
+      </tr>
+      <tr>
+         <canvas id="canvas" width="800" height="350"></canvas>
+       </tr>  
+       <tr>
+         <p> Now Playing: <span class="metadata" id="metadata"></span> </p>
+      </tr>
+     </table>
    </div>
+
+
+
+
+
 </body>
 
  </html> 
