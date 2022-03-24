@@ -18,7 +18,11 @@ html {
 img{
        object-fit: contain;
 }
-
+table 
+{
+    table-layout:fixed;
+    width:100%;
+}
 .streambtn{
   background-color: #FFFFFF; 
   border: 2px solid black;
