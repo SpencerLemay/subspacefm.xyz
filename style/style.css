@@ -8,8 +8,8 @@ html {
 }
 
 .streamPlayer{
+  display:inline-block;
   margin: auto;
-  width: 50%;
   border: 3px solid black;
   padding: 10px;
   background-color: rgba(255, 255, 255, 0.85);
