@@ -16,21 +16,21 @@
 
     <div id="canvasParent" style=" display: grid;">
          <canvas id="canvas" style="display: grid;grid-column: 1;grid-row: 1;" width="790" height="350"></canvas>
-         <table id="canvasCover" style="width: 800px;height: 350px;grid-column: 1;z-index: 999;grid-row: 1;grid-template-columns: repeat(1, 20px); border: 1px solid; border-collapse: collapse;">
+         <table id="canvasCover" style="width: 800px;height: 350px;grid-column: 1;z-index: 999;grid-row: 1;grid-template-columns: repeat(1, 20px); border: 1px solid; table-layout: fixed;">
           <tbody>
-           <tr><td><p style="font-size: 10px; grid-column: 1;">+30db</p></td></tr>
-           <tr><td><p style="font-size: 10px; grid-column: 1;">+25db</p></td></tr>
-           <tr><td><p style="font-size: 10px; grid-column: 1;">+20db</p></td></tr>
-           <tr><td><p style="font-size: 10px; grid-column: 1;">+15db</p></td></tr>
-           <tr><td><p style="font-size: 10px; grid-column: 1;">+10db</p></td></tr>
-           <tr><td><p style="font-size: 10px; grid-column: 1;"> +5dB</p></td> </tr>
-           <tr><td><p style="font-size: 10px; grid-column: 1;">  0dB</p></td>  </tr>
-           <tr><td><p style="font-size: 10px; grid-column: 1;"> -5dB</p></td> </tr>
-           <tr><td><p style="font-size: 10px; grid-column: 1;">-10dB</p></td></tr>
-           <tr><td><p style="font-size: 10px; grid-column: 1;">-15dB</p></td></tr>
+           <tr><td><p style="border: 1px solid; font-size: 10px; grid-column: 1;"> +30dB</p></td> <td style="border: 1px solid;" colspan="10"></td><td></td><td></td><td></td><td></td> <td style="border: 1px solid;" colspan="10"></td></tr>   
+           <tr><td><p style="border: 1px solid; font-size: 10px; grid-column: 1;"> +25dB</p></td> </tr>
+           <tr><td><p style="border: 1px solid; font-size: 10px; grid-column: 1;"> +20dB</p></td> </tr>
+           <tr><td><p style="border: 1px solid; font-size: 10px; grid-column: 1;"> +15dB</p></td> </tr>
+           <tr><td><p style="border: 1px solid; font-size: 10px; grid-column: 1;"> +10dB</p></td> </tr>
+           <tr><td><p style="border: 1px solid; font-size: 10px; grid-column: 1;">   +5dB</p></td> </tr>
+           <tr><td><p style="border: 1px solid; font-size: 10px; grid-column: 1;">     0dB</p></td> </tr>
+           <tr><td><p style="border: 1px solid; font-size: 10px; grid-column: 1;">   -5dB</p></td> </tr>
+           <tr><td><p style="border: 1px solid; font-size: 10px; grid-column: 1;"> -10dB</p></td> </tr>
+           <tr><td><p style="border: 1px solid; font-size: 10px; grid-column: 1;"> -15dB</p></td> </tr>
            </tbody>
          </table>
-         <table id="canvasFooter" style="width:800px; height: 13px; grid-auto-columns: minmax(0, 1fr); grid-auto-flow: column;">
+         <table id="canvasFooter" style="width:800px; height: 13px;">
           <tr>
             <td width="10"></td>
             <td><p style="font-size: 10px;">10Hz</p></td>
