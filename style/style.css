@@ -22,6 +22,7 @@ tr{
 }
 
 .streambtn{
+  width: 140px;
   background-color: #FFFFFF; 
   border: 2px solid black;
   color: black;
