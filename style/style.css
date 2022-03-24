@@ -41,8 +41,8 @@ canvas, .canvasCover{
 }
 .canvasCover{
   position: absolute;
-  height: 100%;
-  width: 100%;
+  width:  800px;
+  height: 350px;
   display: block;
   border: 1px solid;
   z-index: 999;
