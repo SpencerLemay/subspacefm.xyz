@@ -35,6 +35,13 @@ tr{
   margin: 2.5px;
   margin-bottom: 5px;
 }
+.linksbox{
+  width:  800px;
+  display: grid;
+  margin: auto;
+  border: 3px solid black;
+  padding: 10px;   
+}
 
 .bar-wrapper {
   height: 300px;
