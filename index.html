@@ -15,8 +15,9 @@
     </div>
 
     <div id="canvasParent" style=" display: grid;">
-         <canvas id="canvas" style="display: grid;grid-column: 2;grid-row: 1;z-index: 999;" width="800" height="350"></canvas>
-         <table id="canvasCover" style="width: 810px;height: 350px;grid-column: 1;grid-row: 1;grid-template-columns: repeat(1, 20px); border: 1px solid; border-collapse: collapse;">
+         <div style="grid-column:1;grid-row: 1;"></div>
+         <canvas id="canvas" style="display: grid;grid-column: 2;grid-row: 1;z-index: 999;" width="790" height="350"></canvas>
+         <table id="canvasCover" style="width: 800px;height: 350px;grid-column: 2;grid-row: 1;grid-template-columns: repeat(1, 20px); border: 1px solid; border-collapse: collapse;">
           <tbody>
            <tr><td><p style="font-size: 10px; grid-column: 1;">+30db</p></td><td style="grid-column: 2;"></td></tr>
            <tr><td><p style="font-size: 10px; grid-column: 1;">+25db</p></td><td style="grid-column: 2;"></td></tr>
@@ -32,6 +33,7 @@
          </table>
          <table id="canvasFooter" style="width:800px; height: 13px;">
           <tr>
+            <td width="10"></td>
             <td><p style="font-size: 10px;">10Hz</p></td>
             <td></td>
             <td></td>
