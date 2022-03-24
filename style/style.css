@@ -6,7 +6,9 @@ html {
        background-size: cover;
        font-family: "Times New Roman", Times, serif;
 }
-
+tr{
+       width: 100%;
+}
 .streamPlayer{
   /*display:inline-block;*/
   margin: auto;
@@ -28,6 +30,7 @@ html {
   text-decoration: none;
   display: inline-block;
   font-size: 16px;
+  margin: 2.5px;
 }
 
 .bar-wrapper {
