@@ -31,10 +31,21 @@ img{
   display: inline-block;
   font-size: 16px;
 }
-.canvas{
-  background-color: rgba(102, 204, 255, 0.50);
+.canvasParent{
+ position: relative;
+  width:  800px;
+  height: 350px;
 }
+.canvas{
 
+}
+.canvasCover{
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  display: block;
+  z-index: 999;
+}
 .bar-wrapper {
   height: 300px;
   position: relative;

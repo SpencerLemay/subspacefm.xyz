@@ -12,20 +12,19 @@
 
 
    <div class="streamPlayer" id="center">
-     <table id="playerTable">
-      <tr id="playerControls">
-        <div>
-           <button class="streambtn" id="play"> Play </button>
-           <button class="streambtn" id="stop"> Stop </button>
-        </div>
-      </tr>
-      <tr>
-         <canvas id="canvas" width="800" height="350"></canvas>
-       </tr>  
-       <tr>
-         <p> Now Playing: <span class="metadata" id="metadata"></span> </p>
-      </tr>
-     </table>
+     
+    <div>
+         <button class="streambtn" id="play"> Play </button>
+         <button class="streambtn" id="stop"> Stop </button>
+    </div>
+
+    <div id="canvasParent">
+         <canvas id="canvas"></canvas>
+         <div id="canvasCover"></div>
+    </div>
+
+     <p> Now Playing: <span class="metadata" id="metadata"></span> </p>
+
    </div>
 
 
