@@ -64,6 +64,11 @@ tr{
   border-bottom: 3px solid #000;
 }
 
+.controlbox{
+       display: grid;   
+       grid-template-columns: repeat(2, 160px);
+}
+
 a:link, a:visited {
   background-color: #FFFFFF; 
   border: 2px solid black;
