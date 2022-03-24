@@ -15,12 +15,8 @@ html {
   background-color: rgba(255, 255, 255, 0.85);
   overflow-x: auto;
   overflow-y : hidden;
-  width:  800px;
-  height: 350px;
-}
-
-img{
-       object-fit: contain;
+  width:  900px;
+  height: 450px;
 }
 
 .streambtn{
@@ -34,11 +30,15 @@ img{
   font-size: 16px;
 }
 .canvasParent{
+ display: grid;
  position: relative;
   width:  800px;
   height: 350px;
 }
-
+canvas, .canvasCover{
+  grid-column: 1;
+  grid-row: 1;
+}
 .canvasCover{
   position: absolute;
   height: 100%;
