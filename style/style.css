@@ -29,24 +29,7 @@ html {
   display: inline-block;
   font-size: 16px;
 }
-.canvasParent{
- display: grid;
- position: relative;
-  width:  800px;
-  height: 350px;
-}
-canvas, .canvasCover{
-  grid-column: 1;
-  grid-row: 1;
-}
-.canvasCover{
-  position: absolute;
-  width:  800px;
-  height: 350px;
-  display: block;
-  border: 1px solid;
-  z-index: 999;
-}
+
 .bar-wrapper {
   height: 300px;
   position: relative;
