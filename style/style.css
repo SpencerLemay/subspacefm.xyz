@@ -44,6 +44,9 @@ tr{
   background-color: rgba(255, 255, 255, 0.85);
   padding: 10px;   
 }
+.pheader{
+       margin: auto;
+}
 
 .bar-wrapper {
   height: 300px;
