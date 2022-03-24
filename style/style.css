@@ -13,17 +13,14 @@ html {
   border: 3px solid black;
   padding: 10px;
   background-color: rgba(255, 255, 255, 0.85);
+  overflow-x: auto;
+  overflow-y : hidden;
 }
 
 img{
        object-fit: contain;
 }
-table 
-{
-    table-layout:fixed;
-    width:100%;
-    word-break: break-word;
-}
+
 .streambtn{
   background-color: #FFFFFF; 
   border: 2px solid black;
