@@ -33,11 +33,11 @@ img{
 }
 .canvasParent{
  position: relative;
-  width:  800px;
-  height: 350px;
+
 }
 .canvas{
-
+  width:  800px;
+  height: 350px;
 }
 .canvasCover{
   position: absolute;
