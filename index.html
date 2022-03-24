@@ -6,16 +6,12 @@
 
 <body>
 
-
-
-
-
-
    <div class="streamPlayer" id="center">
      
     <div>
          <button class="streambtn" id="play"> Play </button>
          <button class="streambtn" id="stop"> Stop </button>
+          <p> Now Playing: <span class="metadata" id="metadata"></span> </p>
     </div>
 
     <div id="canvasParent" style=" display: grid;">
@@ -34,9 +30,13 @@
            <tr><td></td></tr>
            </tbody>
          </table>
+         <table id="canvasFooter" style="width:800px height: 10px; border: 1px solid; border-collapse: collapse;">
+          <tr>
+            <td><p>10Hz</p></td><td><p>1kHz</p></td><td><p>10kHz</p></td>
+          </tr>
+         </table>
     </div>
 
-     <p> Now Playing: <span class="metadata" id="metadata"></span> </p>
 
    </div>
 
