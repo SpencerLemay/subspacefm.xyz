@@ -7,7 +7,7 @@ html {
        font-family: "Times New Roman", Times, serif;
 }
 tr{
-       width: 100%;
+       border: 1px solid;
 }
 .streamPlayer{
   /*display:inline-block;*/
