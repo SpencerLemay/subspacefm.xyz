@@ -70,7 +70,7 @@ var visualizerStart = function() {
     renderFrame();
 };
 $(function(){
-visualizerStart();
+
 $("#play").click(function(){
    visualizerStart();
 }); 
