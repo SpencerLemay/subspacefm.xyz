@@ -8,7 +8,7 @@ html {
 }
 
 .streamPlayer{
-  display:inline-block;
+  /*display:inline-block;*/
   margin: auto;
   border: 3px solid black;
   padding: 10px;
@@ -35,19 +35,16 @@ img{
 }
 .canvasParent{
  position: relative;
-
-}
-.canvas{
-}
-.canvasContainer{
   width:  800px;
   height: 350px;
 }
+
 .canvasCover{
   position: absolute;
   height: 100%;
   width: 100%;
   display: block;
+  border: 1px solid;
   z-index: 999;
 }
 .bar-wrapper {
