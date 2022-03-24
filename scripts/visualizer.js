@@ -35,12 +35,12 @@ var visualizerStart = function() {
         meterWidth = 10, //width of the meters in the spectrum
         gap = 2, //gap between meters
         capHeight = 2,
-        capStyle = '#999',
+        capStyle = '#000',
         meterNum = 790/ (10 + 2), //count of the meters
         capYPositionArray = []; ////store the vertical position of hte caps for the preivous frame
     ctx = canvas.getContext('2d'),
     gradient = ctx.createLinearGradient(0, 0, 0, 300);
-    gradient.addColorStop(1, '#000');
+    gradient.addColorStop(1, '#333');
     gradient.addColorStop(0.5, '#999');
     gradient.addColorStop(0, '#fff');
     // loop
