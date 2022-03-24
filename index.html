@@ -8,10 +8,10 @@
 
    <div class="streamPlayer" id="center">
      
-    <div>
-         <button class="streambtn" id="play"> Play </button>
-         <button class="streambtn" id="stop"> Stop </button>
-          <p> Now Playing: <span class="metadata" id="metadata"></span> </p>
+    <div style="display: grid;">
+         <button style="grid-row: 1;" class="streambtn" id="play"> Play </button>
+         <button style="grid-row: 1;" class="streambtn" id="stop"> Stop </button>
+          <p style="grid-row: 1;"> Now Playing: <span class="metadata" id="metadata"></span> </p>
     </div>
 
     <div id="canvasParent" style=" display: grid;">
@@ -30,9 +30,9 @@
            <tr><td></td></tr>
            </tbody>
          </table>
-         <table id="canvasFooter" style="width:800px height: 10px; border: 1px solid; border-collapse: collapse;">
+         <table id="canvasFooter" style="width:800px; height: 13px;">
           <tr>
-            <td><p>10Hz</p></td><td><p>1kHz</p></td><td><p>10kHz</p></td>
+            <td><p style="font-size: 10px;">10Hz</p></td><td><p style="font-size: 10px;">1kHz</p></td><td><p style="font-size: 10px;">10kHz</p></td>
           </tr>
          </table>
     </div>
