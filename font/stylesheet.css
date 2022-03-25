@@ -11,3 +11,16 @@
     font-display: swap;
 }
 
+@font-face {
+    font-family: 'EB Garamond';
+    src: url('EBGaramond-Medium.eot');
+    src: url('EBGaramond-Medium.eot?#iefix') format('embedded-opentype'),
+        url('EBGaramond-Medium.woff2') format('woff2'),
+        url('EBGaramond-Medium.woff') format('woff'),
+        url('EBGaramond-Medium.ttf') format('truetype'),
+        url('EBGaramond-Medium.svg#EBGaramond-Medium') format('svg');
+    font-weight: 500;
+    font-style: normal;
+    font-display: swap;
+}
+
