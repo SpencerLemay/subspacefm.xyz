@@ -17,9 +17,9 @@
 window.AudioContext = window.AudioContext || window.webkitAudioContext || window.mozAudioContext;
 
 var visualizerStart = function() {
-   if (player.state == 'playing'
-    || player.state == 'loading')
-        return;
+   if (player.started != undefined)
+       return;
+   player.started = 1;
    var ctx = new AudioContext();
     var analyser = ctx.createAnalyser();
     var audioSrc = ctx.createMediaElementSource(player.audioElement);
