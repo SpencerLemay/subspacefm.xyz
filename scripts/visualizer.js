@@ -22,6 +22,8 @@ var visualizerStart = function() {
     try{
          var audioSrc = ctx.createMediaElementSource(player.audioElement);
          }
+    catch{}
+    
     // we have to connect the MediaElementSource with the analyser 
     audioSrc.connect(analyser);
     analyser.connect(ctx.destination);
