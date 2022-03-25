@@ -17,12 +17,12 @@
 window.AudioContext = window.AudioContext || window.webkitAudioContext || window.mozAudioContext;
 
 var visualizerStart = function() {
+   if (player.state == 'playing')
+        return;
    var ctx = new AudioContext();
     var analyser = ctx.createAnalyser();
-    try{
-         var audioSrc = ctx.createMediaElementSource(player.audioElement);
-         }
-    catch(err){}
+    var audioSrc = ctx.createMediaElementSource(player.audioElement);
+
     
     // we have to connect the MediaElementSource with the analyser 
     audioSrc.connect(analyser);
