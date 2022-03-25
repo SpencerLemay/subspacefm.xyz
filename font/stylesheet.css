@@ -1,0 +1,13 @@
+@font-face {
+    font-family: 'EB Garamond';
+    src: url('EBGaramond-MediumItalic.eot');
+    src: url('EBGaramond-MediumItalic.eot?#iefix') format('embedded-opentype'),
+        url('EBGaramond-MediumItalic.woff2') format('woff2'),
+        url('EBGaramond-MediumItalic.woff') format('woff'),
+        url('EBGaramond-MediumItalic.ttf') format('truetype'),
+        url('EBGaramond-MediumItalic.svg#EBGaramond-MediumItalic') format('svg');
+    font-weight: 500;
+    font-style: italic;
+    font-display: swap;
+}
+
