@@ -12,6 +12,7 @@ html {
 tr{
        border: 1px solid;
 }
+@media (prefers-color-scheme: light) {
 .streamPlayer{
   /*display:inline-block;*/
   margin: auto;
@@ -23,7 +24,8 @@ tr{
   width:  810px;
   height: auto;
 }
-
+}
+@media (prefers-color-scheme: light) {
 .streambtn{
   width: 140px;
   background-color: #FFFFFF; 
@@ -38,6 +40,8 @@ tr{
   margin: 2.5px;
   margin-bottom: 5px;
 }
+}
+@media (prefers-color-scheme: light) {
 .linksbox{
   width:  300px;
   display: grid;
@@ -46,6 +50,7 @@ tr{
   border: 3px solid black;
   background-color: rgba(255, 255, 255, 0.85);
   padding: 10px;   
+}
 }
 .pheader{
        margin: auto;
@@ -56,6 +61,7 @@ tr{
   height: 300px;
   position: relative;
 }
+@media (prefers-color-scheme: light) {
 .bar {
   position: relative;
   bottom: 0;
@@ -65,12 +71,13 @@ tr{
   height: 5px;
   border-bottom: 3px solid #000;
 }
-
+}
 .controlbox{
        display: grid;   
        grid-template-columns: repeat(2, 160px);
 }
 
+@media (prefers-color-scheme: light) {
 a:link, a:visited {
   background-color: #FFFFFF; 
   border: 2px solid black;
@@ -84,11 +91,12 @@ a:link, a:visited {
   margin: 2.5px;
   margin-bottom: 5px;
 }
-
+}
+@media (prefers-color-scheme: light) {
 a:hover, a:active {
   background-color: lightgrey;
 }
-
+}
 .hertz{
     font-size: 10px;
 }
