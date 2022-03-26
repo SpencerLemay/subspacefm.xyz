@@ -1,6 +1,6 @@
 @import '../font/stylesheet.css';
 
-
+@media (prefers-color-scheme: light) {
 html { 
        background: url('../images/enlighten.jpg') no-repeat center center fixed; 
        -webkit-background-size: cover;
@@ -9,10 +9,9 @@ html {
        background-size: cover;
        font-family: "EB Garamond";
 }
-tr{
-       border: 1px solid;
-}
-@media (prefers-color-scheme: light) {
+
+
+
 .streamPlayer{
   /*display:inline-block;*/
   margin: auto;
@@ -24,8 +23,7 @@ tr{
   width:  810px;
   height: auto;
 }
-}
-@media (prefers-color-scheme: light) {
+
 .streambtn{
   width: 140px;
   background-color: #FFFFFF; 
@@ -40,8 +38,7 @@ tr{
   margin: 2.5px;
   margin-bottom: 5px;
 }
-}
-@media (prefers-color-scheme: light) {
+
 .linksbox{
   width:  300px;
   display: grid;
@@ -51,7 +48,7 @@ tr{
   background-color: rgba(255, 255, 255, 0.85);
   padding: 10px;   
 }
-}
+
 .pheader{
        margin: auto;
 
@@ -61,7 +58,7 @@ tr{
   height: 300px;
   position: relative;
 }
-@media (prefers-color-scheme: light) {
+
 .bar {
   position: relative;
   bottom: 0;
@@ -71,13 +68,9 @@ tr{
   height: 5px;
   border-bottom: 3px solid #000;
 }
-}
-.controlbox{
-       display: grid;   
-       grid-template-columns: repeat(2, 160px);
-}
 
-@media (prefers-color-scheme: light) {
+
+
 a:link, a:visited {
   background-color: #FFFFFF; 
   border: 2px solid black;
@@ -91,12 +84,124 @@ a:link, a:visited {
   margin: 2.5px;
   margin-bottom: 5px;
 }
-}
-@media (prefers-color-scheme: light) {
+
 a:hover, a:active {
   background-color: lightgrey;
 }
 }
+
+
+
+
+
+
+@media (prefers-color-scheme: dark) {
+html { 
+       background: url('../images/lenigma.JPG') no-repeat center center fixed; 
+       -webkit-background-size: cover;
+       -moz-background-size: cover;
+       -o-background-size: cover;
+       background-size: cover;
+       font-family: "EB Garamond";
+}
+
+
+
+.streamPlayer{
+  /*display:inline-block;*/
+  margin: auto;
+  margin-bottom: 15px;
+  border: 3px solid grey;
+  padding: 10px;
+  background-color: rgba(666, 666, 666, 0.85);
+  overflow-x: auto;
+  width:  810px;
+  height: auto;
+}
+
+.streambtn{
+  width: 140px;
+  background-color: #FFFFFF; 
+  border: 2px solid grey;
+  color: black;
+  padding: 10px 16px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  font-family: "EB Garamond";
+  margin: 2.5px;
+  margin-bottom: 5px;
+}
+
+.linksbox{
+  width:  300px;
+  display: grid;
+  justify-content: center;
+  margin: auto;
+  border: 3px solid grey;
+  background-color: rgba(255, 255, 255, 0.85);
+  padding: 10px;   
+}
+
+.pheader{
+       margin: auto;
+
+}
+
+.bar-wrapper {
+  height: 300px;
+  position: relative;
+}
+
+.bar {
+  position: relative;
+  bottom: 0;
+  width: 5px;
+  display: inline-block;
+  border: 1px solid grey;
+  height: 5px;
+  border-bottom: 3px solid #888;
+}
+
+
+
+a:link, a:visited {
+  background-color: #DDDDD; 
+  border: 2px solid grey;
+  color: black;
+  padding: 10px 16px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  font-family: "EB Garamond";
+  margin: 2.5px;
+  margin-bottom: 5px;
+}
+
+a:hover, a:active {
+  background-color: lightgrey;
+}
+
+}
+
+
+
+
+
+
+
+
+
+
 .hertz{
     font-size: 10px;
+}
+tr{
+       border: 1px solid;
+}
+.controlbox{
+       display: grid;   
+       grid-template-columns: repeat(2, 160px);
 }
