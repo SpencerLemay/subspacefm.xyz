@@ -1,6 +1,5 @@
 @import '../font/stylesheet.css';
 
-@media (prefers-color-scheme: light) {
 html { 
        background: url('../images/lenigma.jpg') no-repeat center center fixed; 
        -webkit-background-size: cover;
@@ -88,7 +87,7 @@ a:link, a:visited {
 a:hover, a:active {
   background-color: lightgrey;
 }
-}
+
 
 
 
