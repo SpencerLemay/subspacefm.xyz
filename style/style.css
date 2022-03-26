@@ -97,7 +97,7 @@ a:hover, a:active {
 
 @media (prefers-color-scheme: dark) {
 html { 
-       background: url('../images/lenigma.JPG') no-repeat center center fixed; 
+       background: url('../images/lenigma.jpg') no-repeat center center fixed; 
        -webkit-background-size: cover;
        -moz-background-size: cover;
        -o-background-size: cover;
