@@ -22608,27 +22608,15 @@ function toggleTheme() {
 (function () {
    if (localStorage.getItem('theme') === 'theme-dark') {
        setTheme('theme-dark');
-       window.gradient.addColorStop(1, '#aaa');
-       window.gradient.addColorStop(0.5, '#777');
-       window.gradient.addColorStop(0, '#555');
    } else {
        setTheme('theme-light');
-      window.gradient.addColorStop(1, '#333');
-      window.gradient.addColorStop(0.5, '#999');
-      window.gradient.addColorStop(0, '#fff');
    }
 
    $("#light").click(function(){
        setTheme('theme-light');
-       window.gradient.addColorStop(1, '#333');
-       window.gradient.addColorStop(0.5, '#999');
-       window.gradient.addColorStop(0, '#fff');
       }); 
       $("#dark").click(function(){
-       setTheme('theme-dark');       
-       window.gradient.addColorStop(1, '#aaa');
-       window.gradient.addColorStop(0.5, '#777');
-       window.gradient.addColorStop(0, '#555');
+       setTheme('theme-dark'); 
       }); 
 })();
 },{}],75:[function(require,module,exports){
@@ -22649,7 +22637,7 @@ function toggleTheme() {
  */
 
 window.AudioContext = window.AudioContext || window.webkitAudioContext || window.mozAudioContext;
-window.gradient;
+
 
 var visualizerStart = function() {
    if (player.started != undefined)
@@ -22680,10 +22668,10 @@ var visualizerStart = function() {
         capYPositionArray = []; ////store the vertical position of hte caps for the preivous frame
     var gradient;
     ctx = canvas.getContext('2d'),
-    window.gradient = ctx.createLinearGradient(0, 0, 0, 300);
-    window.gradient.addColorStop(1, '#333');
-    window.gradient.addColorStop(0.5, '#999');
-    window.gradient.addColorStop(0, '#fff');
+    gradient = ctx.createLinearGradient(0, 0, 0, 300);
+    gradient.addColorStop(1, '#333');
+    gradient.addColorStop(0.5, '#999');
+    gradient.addColorStop(0, '#fff');
     // loop
     function renderFrame() {
         var array = new Uint8Array(analyser.frequencyBinCount);
