@@ -37,10 +37,11 @@ var visualizerStart = function() {
      switch(localStorage.getItem('theme')){
      case 'theme-dark':
              btm = [1,'#717e80']
-             mid= [0.5, '#777'];
-             top = [0,'#bbb'];
-             cap_color = '#000';
+             mid= [0.5, '#3d4445'];
+             top = [0,'#131b1c'];
+             cap_color = '#131b1c';
              break;
+    default:        
     case 'theme-light': 
              btm = [1,'#000']
              mid= [0.5, '#777'];

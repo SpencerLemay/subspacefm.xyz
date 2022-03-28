@@ -22593,6 +22593,8 @@ $(function () {
 
 }).call(this)}).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
 },{"icecast-metadata-player":46,"jquery":54}],74:[function(require,module,exports){
+
+
 // function to set a given theme/color-scheme
 function setTheme(themeName) {
     localStorage.setItem('theme', themeName);
@@ -22606,17 +22608,36 @@ function toggleTheme() {
    }
 }// Immediately invoked function to set the theme on initial load
 (function () {
-   if (localStorage.getItem('theme') === 'theme-dark') {
-       setTheme('theme-dark');
-   } else {
+
+   var themes = [
+   "theme-light",
+   "theme-dark",
+   "theme-pink",
+   "theme-green",
+   "theme-yellow"
+   ];
+
+   theme = localStorage.getItem('theme');
+   for (var i = 0;i < themes.length();i++)  {
+         if (theme === themes[i]) {
+              setTheme(theme);
+              }
+         } 
+   if (i == themes.length()) {
        setTheme('theme-light');
    }
 
-   $("#light").click(function(){
-       setTheme('theme-light');
-      }); 
-      $("#dark").click(function(){
-       setTheme('theme-dark'); 
+
+    $("#dark").click(function(){
+
+       theme = localStorage.getItem('theme');
+       for (var i = 0;i < themes.length();i++)  {
+             if (theme === themes[i]) {
+                  setTheme(themes[++i]);
+                  return;
+                  }
+             }       
+       setTheme('theme-light'); 
       }); 
 })();
 },{}],75:[function(require,module,exports){
@@ -22659,10 +22680,11 @@ var visualizerStart = function() {
      switch(localStorage.getItem('theme')){
      case 'theme-dark':
              btm = [1,'#717e80']
-             mid= [0.5, '#777'];
-             top = [0,'#bbb'];
-             cap_color = '#000';
+             mid= [0.5, '#3d4445'];
+             top = [0,'#131b1c'];
+             cap_color = '#131b1c';
              break;
+    default:        
     case 'theme-light': 
              btm = [1,'#000']
              mid= [0.5, '#777'];

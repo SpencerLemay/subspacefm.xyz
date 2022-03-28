@@ -1,3 +1,5 @@
+
+
 // function to set a given theme/color-scheme
 function setTheme(themeName) {
     localStorage.setItem('theme', themeName);
@@ -11,16 +13,35 @@ function toggleTheme() {
    }
 }// Immediately invoked function to set the theme on initial load
 (function () {
-   if (localStorage.getItem('theme') === 'theme-dark') {
-       setTheme('theme-dark');
-   } else {
+
+   var themes = [
+   "theme-light",
+   "theme-dark",
+   "theme-pink",
+   "theme-green",
+   "theme-yellow"
+   ];
+
+   theme = localStorage.getItem('theme');
+   for (var i = 0;i < themes.length();i++)  {
+         if (theme === themes[i]) {
+              setTheme(theme);
+              }
+         } 
+   if (i == themes.length()) {
        setTheme('theme-light');
    }
 
-   $("#light").click(function(){
-       setTheme('theme-light');
-      }); 
-      $("#dark").click(function(){
-       setTheme('theme-dark'); 
+
+    $("#dark").click(function(){
+
+       theme = localStorage.getItem('theme');
+       for (var i = 0;i < themes.length();i++)  {
+             if (theme === themes[i]) {
+                  setTheme(themes[++i]);
+                  return;
+                  }
+             }       
+       setTheme('theme-light'); 
       }); 
 })();
