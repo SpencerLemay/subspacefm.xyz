@@ -3,7 +3,7 @@
 
 
   .theme-light {
-    --background:  url('../dist/images/enlighten.webp') no-repeat cover center fixed;
+    --background:  url('../dist/images/enlighten.webp') no-repeat center center fixed;
     --color-primary: rgba(255, 255, 255, 0.85);
     --color-accent: black;
     --color-button: white;
@@ -12,7 +12,7 @@
     --secondary-font: black;
   }
   .theme-dark {
-    --background:  url('../dist/images/lenigma.webp') no-repeat cover center fixed;
+    --background:  url('../dist/images/lenigma.webp') no-repeat center center fixed;
     --color-primary: rgba(54, 55, 60, 0.72);
     --color-button: #717e80;
     --color-accent: #352c2c;
@@ -21,7 +21,7 @@
     --secondary-font: #bcbfbc;
   }
     .theme-pink {
-    --background:  url('../dist/images/pink.webp') no-repeat cover center fixed;
+    --background:  url('../dist/images/pink.webp') no-repeat center center fixed;
     --color-primary: rgba(54, 55, 60, 0.72);
     --color-button: #717e80;
     --color-accent: #352c2c;
@@ -30,7 +30,7 @@
     --secondary-font: #bcbfbc;
   }
     .theme-green {
-    --background:  url('../dist/images/green.jpeg') no-repeat cover center fixed;
+    --background:  url('../dist/images/green.jpeg') no-repeat center center fixed;
     --color-primary: rgba(54, 55, 60, 0.72);
     --color-button: #717e80;
     --color-accent: #352c2c;
@@ -39,7 +39,7 @@
     --secondary-font: #bcbfbc;
   }
     .theme-yellow {
-    --background:  url('../dist/images/yellow.jpeg') no-repeat cover center fixed;
+    --background:  url('../dist/images/yellow.j') no-repeat center center fixed;
     --color-primary: rgba(54, 55, 60, 0.72);
     --color-button: #717e80;
     --color-accent: #352c2c;
@@ -56,6 +56,7 @@ html {
        background-size: cover;
        font-family: "EB Garamond";
        color: var(--font-color);
+       width: auto;
 }
 .streamPlayer{
   margin: auto;
