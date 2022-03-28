@@ -81,13 +81,23 @@ html {
   height: 5px;
   border-bottom: 3px solid var(--color-accent);
 }
-
-
+.theme{
+  height: 15px;
+  width: 15px;
+}
+#light{
+background-color: white;
+border: black;
+}
+#dark{
+background-color: black;
+border: white;
+}
 
 a:link, a:visited {
   background-color: var(--color-button); 
   border: 2px solid var(--color-accent);
-  color: --font-color;
+  color: var(--font-color);
   padding: 10px 16px;
   text-align: center;
   text-decoration: none;
