@@ -9,6 +9,7 @@
     --color-button: white;
     --color-active: lightgrey;
     --font-color: black;
+    --secondary-font: black;
   }
   .theme-dark {
     --background:  url('../dist/images/lenigma.webp') no-repeat center center fixed;
@@ -17,6 +18,7 @@
     --color-accent: #352c2c;
     --color-active: lightgrey;
     --font-color: #8e8f93;
+    --secondary-font: #c4c8db;
   }
 
 html { 
@@ -38,7 +40,12 @@ html {
   width:  810px;
   height: auto;
 }
-
+.nowplaying{
+color: var(--secondary-font);
+}
+.metadata{
+color: var(--secondary-font);
+}
 .streambtn{
   width: 140px;
   background-color: var(--color-button); 
