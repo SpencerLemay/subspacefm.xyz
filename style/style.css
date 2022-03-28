@@ -96,11 +96,11 @@ color: var(--secondary-font);
 }
 #light{
 background-color: white;
-border: black;
+border: 2px solid black;
 }
 #dark{
 background-color: black;
-border: white;
+border: 2px solid white;
 }
 
 a:link, a:visited {
