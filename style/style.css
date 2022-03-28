@@ -1,7 +1,7 @@
 @import '../font/stylesheet.css';
 
 html { 
-       background: url('../dist/images/enlighten.webp') no-repeat center center fixed; 
+       background: var(--background); 
        -webkit-background-size: cover;
        -moz-background-size: cover;
        -o-background-size: cover;
@@ -13,6 +13,7 @@ html {
     --background:  url('../dist/images/enlighten.webp') no-repeat center center fixed;
     --color-primary: rgba(255, 255, 255, 0.85);
     --color-accent: black;
+    --color-button: white;
     --color-active: lightgrey;
     --font-color: black;
   }
@@ -26,12 +27,11 @@ html {
 
 
 .streamPlayer{
-  /*display:inline-block;*/
   margin: auto;
   margin-bottom: 15px;
-  border: 3px solid --color-accent;
+  border: 3px solid var(--color-accent);
   padding: 10px;
-  background-color: --color-primary
+  background-color: var(--color-primary);
   overflow-x: auto;
   width:  810px;
   height: auto;
@@ -40,8 +40,8 @@ html {
 .streambtn{
   width: 140px;
   background-color: #FFFFFF; 
-  border: 2px solid --color-accent;
-  color: --font-color;
+  border: 2px solid var(--color-accent);
+  color: var(--font-color);
   padding: 10px 16px;
   text-align: center;
   text-decoration: none;
@@ -57,8 +57,8 @@ html {
   display: grid;
   justify-content: center;
   margin: auto;
-  border: 3px solid --color-accent;;
-  background-color: --color-primary
+  border: 3px solid var(--color-accent);
+  background-color: var(--color-primary)
   padding: 10px;   
 }
 
@@ -77,16 +77,16 @@ html {
   bottom: 0;
   width: 5px;
   display: inline-block;
-  border: 1px solid --color-accent;
+  border: 1px solid var(--color-accent);
   height: 5px;
-  border-bottom: 3px solid --color-accent;;
+  border-bottom: 3px solid var(--color-accent);
 }
 
 
 
 a:link, a:visited {
-  background-color: #FFFFFF; 
-  border: 2px solid --color-accent;
+  background-color: var(--color-button); 
+  border: 2px solid var(--color-accent);
   color: --font-color;
   padding: 10px 16px;
   text-align: center;
@@ -99,14 +99,14 @@ a:link, a:visited {
 }
 
 a:hover, a:active {
-  background-color: --color-active;
+  background-color: var(--color-active);
 }
 
 .hertz{
     font-size: 10px;
 }
 tr{
-       border: 1px solid --color-accent;
+       border: 1px solid var(--color-accent);
 }
 .controlbox{
        display: grid;   
