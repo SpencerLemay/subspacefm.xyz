@@ -1,13 +1,6 @@
 @import '../font/stylesheet.css';
 
-html { 
-       background: var(--background); 
-       -webkit-background-size: cover;
-       -moz-background-size: cover;
-       -o-background-size: cover;
-       background-size: cover;
-       font-family: "EB Garamond";
-}
+
 
   .theme-light {
     --background:  url('../dist/images/enlighten.webp') no-repeat center center fixed;
@@ -20,12 +13,20 @@ html {
   .theme-dark {
     --background:  url('../dist/images/lenigma.webp') no-repeat center center fixed;
     --color-primary: rgba(122, 122, 122, 0.85);
-    --color-accent: white;
+    --color-accent: #352c2c;
     --color-active: lightgrey;
     --font-color: white;
   }
 
-
+html { 
+       background: var(--background); 
+       -webkit-background-size: cover;
+       -moz-background-size: cover;
+       -o-background-size: cover;
+       background-size: cover;
+       font-family: "EB Garamond";
+       color: var(--font-color);
+}
 .streamPlayer{
   margin: auto;
   margin-bottom: 15px;
