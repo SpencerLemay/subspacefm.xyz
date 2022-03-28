@@ -22593,6 +22593,26 @@ $(function () {
 
 }).call(this)}).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
 },{"icecast-metadata-player":46,"jquery":54}],74:[function(require,module,exports){
+// function to set a given theme/color-scheme
+function setTheme(themeName) {
+    localStorage.setItem('theme', themeName);
+    document.documentElement.className = themeName;
+}// function to toggle between light and dark theme
+function toggleTheme() {
+   if (localStorage.getItem('theme') === 'theme-dark'){
+       setTheme('theme-light');
+   } else {
+       setTheme('theme-dark');
+   }
+}// Immediately invoked function to set the theme on initial load
+(function () {
+   if (localStorage.getItem('theme') === 'theme-dark') {
+       setTheme('theme-dark');
+   } else {
+       setTheme('theme-light');
+   }
+})();
+},{}],75:[function(require,module,exports){
 /* * 
  * audio visualizer with html5 audio element
  *
@@ -22676,4 +22696,4 @@ $("#play").click(function(){
    visualizerStart();
 }); 
 });
-},{}]},{},[73,74]);
+},{}]},{},[73,75,74]);

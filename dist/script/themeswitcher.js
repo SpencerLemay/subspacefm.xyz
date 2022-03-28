@@ -1,0 +1,1 @@
+function setTheme(e){localStorage.setItem("theme",e),document.documentElement.className=e}function toggleTheme(){"theme-dark"===localStorage.getItem("theme")?setTheme("theme-light"):setTheme("theme-dark")}"theme-dark"===localStorage.getItem("theme")?setTheme("theme-dark"):setTheme("theme-light");
