@@ -15,6 +15,7 @@
  */
 
 window.AudioContext = window.AudioContext || window.webkitAudioContext || window.mozAudioContext;
+var gradient;
 
 var visualizerStart = function() {
    if (player.started != undefined)

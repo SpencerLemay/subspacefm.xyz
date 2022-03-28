@@ -12,11 +12,11 @@
   }
   .theme-dark {
     --background:  url('../dist/images/lenigma.webp') no-repeat center center fixed;
-    --color-primary: rgba(54, 56, 70, 0.85);
+    --color-primary: rgba(54, 55, 60, 0.72);
     --color-button: #181a26;
     --color-accent: #352c2c;
     --color-active: lightgrey;
-    --font-color: white;
+    --font-color: #8e8f93;
   }
 
 html { 

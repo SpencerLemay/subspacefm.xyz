@@ -22608,15 +22608,27 @@ function toggleTheme() {
 (function () {
    if (localStorage.getItem('theme') === 'theme-dark') {
        setTheme('theme-dark');
+       gradient.addColorStop(1, '#aaa');
+       gradient.addColorStop(0.5, '#777');
+       gradient.addColorStop(0, '#555');
    } else {
        setTheme('theme-light');
+       gradient.addColorStop(1, '#333');
+       gradient.addColorStop(0.5, '#999');
+       gradient.addColorStop(0, '#fff');
    }
 
    $("#light").click(function(){
        setTheme('theme-light');
+      gradient.addColorStop(1, '#333');
+       gradient.addColorStop(0.5, '#999');
+       gradient.addColorStop(0, '#fff');
       }); 
       $("#dark").click(function(){
-       setTheme('theme-dark');
+       setTheme('theme-dark');       
+       gradient.addColorStop(1, '#aaa');
+       gradient.addColorStop(0.5, '#777');
+       gradient.addColorStop(0, '#555');
       }); 
 })();
 },{}],75:[function(require,module,exports){
@@ -22637,6 +22649,7 @@ function toggleTheme() {
  */
 
 window.AudioContext = window.AudioContext || window.webkitAudioContext || window.mozAudioContext;
+var gradient;
 
 var visualizerStart = function() {
    if (player.started != undefined)
