@@ -20,6 +20,33 @@
     --font-color: #bcbfbc;
     --secondary-font: #bcbfbc;
   }
+    .theme-pink {
+    --background:  url('../dist/images/pink.webp') no-repeat center center fixed;
+    --color-primary: rgba(54, 55, 60, 0.72);
+    --color-button: #717e80;
+    --color-accent: #352c2c;
+    --color-active: lightgrey;
+    --font-color: #bcbfbc;
+    --secondary-font: #bcbfbc;
+  }
+    .theme-green {
+    --background:  url('../dist/images/green.jpeg') no-repeat center center fixed;
+    --color-primary: rgba(54, 55, 60, 0.72);
+    --color-button: #717e80;
+    --color-accent: #352c2c;
+    --color-active: lightgrey;
+    --font-color: #bcbfbc;
+    --secondary-font: #bcbfbc;
+  }
+    .theme-yellow {
+    --background:  url('../dist/images/yellow.jpeg') no-repeat center center fixed;
+    --color-primary: rgba(54, 55, 60, 0.72);
+    --color-button: #717e80;
+    --color-accent: #352c2c;
+    --color-active: lightgrey;
+    --font-color: #bcbfbc;
+    --secondary-font: #bcbfbc;
+  }
 
 html { 
        background: var(--background); 
