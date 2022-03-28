@@ -1,0 +1,1 @@
+!function(n){n.htmlentities={encode:function(n){for(var e=[],t=n.length-1;t>=0;t--)e.unshift(["&#",n[t].charCodeAt(),";"].join(""));return e.join("")},decode:function(n){return n.replace(/&#(\d+);/g,(function(n,e){return String.fromCharCode(e)}))}}}(window);
