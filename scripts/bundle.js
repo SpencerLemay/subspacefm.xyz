@@ -22649,7 +22649,7 @@ function toggleTheme() {
  */
 
 window.AudioContext = window.AudioContext || window.webkitAudioContext || window.mozAudioContext;
-var gradient;
+window.gradient;
 
 var visualizerStart = function() {
    if (player.started != undefined)
@@ -22680,10 +22680,10 @@ var visualizerStart = function() {
         capYPositionArray = []; ////store the vertical position of hte caps for the preivous frame
     var gradient;
     ctx = canvas.getContext('2d'),
-    gradient = ctx.createLinearGradient(0, 0, 0, 300);
-    gradient.addColorStop(1, '#333');
-    gradient.addColorStop(0.5, '#999');
-    gradient.addColorStop(0, '#fff');
+    window.gradient = ctx.createLinearGradient(0, 0, 0, 300);
+    window.gradient.addColorStop(1, '#333');
+    window.gradient.addColorStop(0.5, '#999');
+    window.gradient.addColorStop(0, '#fff');
     // loop
     function renderFrame() {
         var array = new Uint8Array(analyser.frequencyBinCount);
