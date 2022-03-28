@@ -13,26 +13,26 @@ function toggleTheme() {
 (function () {
    if (localStorage.getItem('theme') === 'theme-dark') {
        setTheme('theme-dark');
-       gradient.addColorStop(1, '#aaa');
-       gradient.addColorStop(0.5, '#777');
-       gradient.addColorStop(0, '#555');
+       window.gradient.addColorStop(1, '#aaa');
+       window.gradient.addColorStop(0.5, '#777');
+       window.gradient.addColorStop(0, '#555');
    } else {
        setTheme('theme-light');
-       gradient.addColorStop(1, '#333');
-       gradient.addColorStop(0.5, '#999');
-       gradient.addColorStop(0, '#fff');
+      window.gradient.addColorStop(1, '#333');
+      window.gradient.addColorStop(0.5, '#999');
+      window.gradient.addColorStop(0, '#fff');
    }
 
    $("#light").click(function(){
        setTheme('theme-light');
-      gradient.addColorStop(1, '#333');
-       gradient.addColorStop(0.5, '#999');
-       gradient.addColorStop(0, '#fff');
+       window.gradient.addColorStop(1, '#333');
+       window.gradient.addColorStop(0.5, '#999');
+       window.gradient.addColorStop(0, '#fff');
       }); 
       $("#dark").click(function(){
        setTheme('theme-dark');       
-       gradient.addColorStop(1, '#aaa');
-       gradient.addColorStop(0.5, '#777');
-       gradient.addColorStop(0, '#555');
+       window.gradient.addColorStop(1, '#aaa');
+       window.gradient.addColorStop(0.5, '#777');
+       window.gradient.addColorStop(0, '#555');
       }); 
 })();
