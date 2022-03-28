@@ -13,7 +13,7 @@
   .theme-dark {
     --background:  url('../dist/images/lenigma.webp') no-repeat center center fixed;
     --color-primary: rgba(54, 56, 70, 0.85);
-    --color-button: white;
+    --color-button: #181a26;
     --color-accent: #352c2c;
     --color-active: lightgrey;
     --font-color: white;
@@ -41,7 +41,7 @@ html {
 
 .streambtn{
   width: 140px;
-  background-color: #FFFFFF; 
+  background-color: var(--color-button); 
   border: 2px solid var(--color-accent);
   color: var(--font-color);
   padding: 10px 16px;
