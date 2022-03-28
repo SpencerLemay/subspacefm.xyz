@@ -22611,6 +22611,13 @@ function toggleTheme() {
    } else {
        setTheme('theme-light');
    }
+
+   $("#light").click(function(){
+       setTheme('theme-light');
+      }); 
+      $("#dark").click(function(){
+       setTheme('theme-dark');
+      }); 
 })();
 },{}],75:[function(require,module,exports){
 /* * 
