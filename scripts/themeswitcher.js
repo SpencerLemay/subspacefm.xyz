@@ -23,7 +23,7 @@ function toggleTheme() {
    ];
 
    var theme = localStorage.getItem('theme');
-   for (var i = 0;i < themes.length();i++)  {
+   for (var i = 0;i < themes.length;i++)  {
          if (theme === themes[i]) {
               setTheme(theme);
               }
@@ -36,7 +36,7 @@ function toggleTheme() {
     $("#dark").click(function(){
 
        theme = localStorage.getItem('theme');
-       for (var i = 0;i < themes.length();i++)  {
+       for (var i = 0;i < themes.length;i++)  {
              if (theme === themes[i]) {
                   setTheme(themes[++i]);
                   return;
