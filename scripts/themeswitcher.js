@@ -22,7 +22,7 @@ function toggleTheme() {
    "theme-yellow"
    ];
 
-   theme = localStorage.getItem('theme');
+   var theme = localStorage.getItem('theme');
    for (var i = 0;i < themes.length();i++)  {
          if (theme === themes[i]) {
               setTheme(theme);
