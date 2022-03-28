@@ -39,7 +39,7 @@
     --secondary-font: #bcbfbc;
   }
     .theme-yellow {
-    --background:  url('../dist/images/yellow.j') no-repeat center center fixed;
+    --background:  url('../dist/images/yellow.jpeg') no-repeat center center fixed;
     --color-primary: rgba(54, 55, 60, 0.72);
     --color-button: #717e80;
     --color-accent: #352c2c;
