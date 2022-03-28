@@ -22655,7 +22655,21 @@ var visualizerStart = function() {
     // analyser.fftSize = 64;
     // frequencyBinCount tells you how many values you'll receive from the analyser
     var frequencyData = new Uint8Array(analyser.frequencyBinCount);
-
+     var top,mid,btm,cap_color;
+     switch(localStorage.getItem('theme')){
+     case 'theme-dark':
+             btm = [1,'#717e80']
+             mid= [0.5, '#777'];
+             top = [0,'#bbb'];
+             cap_color = '#000';
+             break;
+    case 'theme-light': 
+             btm = [1,'#000']
+             mid= [0.5, '#777'];
+             top = [0,'#bbb'];
+             cap_color = '#000';
+             break;
+     }
     // we're ready to receive some data!
     var canvas = document.getElementById('canvas'),
         cwidth = canvas.width,
@@ -22663,15 +22677,17 @@ var visualizerStart = function() {
         meterWidth = 10, //width of the meters in the spectrum
         gap = 2, //gap between meters
         capHeight = 2,
-        capStyle = '#000',
+        capStyle = cap_color,
         meterNum = 800/ (10 + 2), //count of the meters
         capYPositionArray = []; ////store the vertical position of hte caps for the preivous frame
     var gradient;
     ctx = canvas.getContext('2d'),
     gradient = ctx.createLinearGradient(0, 0, 0, 300);
-    gradient.addColorStop(1, '#000');
-    gradient.addColorStop(0.5, '#777');
-    gradient.addColorStop(0, '#bbb');
+    gradient.addColorStop(btm[0],btm[1]);
+    gradient.addColorStop(mid[0],mid[1]);
+    gradient.addColorStop(top[0], top[1]);
+
+
     // loop
     function renderFrame() {
         var array = new Uint8Array(analyser.frequencyBinCount);
