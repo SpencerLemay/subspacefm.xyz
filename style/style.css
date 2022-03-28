@@ -98,11 +98,11 @@ color: var(--secondary-font);
 }
 #light{
 background-color: white;
-color: black;
-border: 2px solid black;
+color: #717e80;
+border: 2px solid #717e80;
 }
 #dark{
-background-color: black;
+background-color: #717e80;
 color: white;
 border: 2px solid white;
 }
