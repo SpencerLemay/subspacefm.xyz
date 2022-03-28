@@ -22,6 +22,7 @@
   }
     .theme-pink {
     --background:  url('../dist/images/pink.webp') no-repeat center center fixed;
+    --background-color: ;
     --color-primary: rgba(54, 55, 60, 0.72);
     --color-button: #717e80;
     --color-accent: #352c2c;
