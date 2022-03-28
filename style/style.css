@@ -84,8 +84,8 @@ html {
   border-bottom: 3px solid var(--color-accent);
 }
 .theme{
-  height: 15px;
-  width: 15px;
+  height: 35px;
+  width: 35px;
 }
 #light{
 background-color: white;
