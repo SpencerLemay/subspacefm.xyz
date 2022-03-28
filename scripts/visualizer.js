@@ -48,6 +48,12 @@ var visualizerStart = function() {
              top = [0,'#bbb'];
              cap_color = '#000';
              break;
+     case 'theme-pink':               
+             btm = [1,'#af9bbb']
+             mid= [0.5, '#c5bdc9'];
+             top = [0,'#fff'];
+             cap_color = '#fff';
+             break;                     
      }
     // we're ready to receive some data!
     var canvas = document.getElementById('canvas'),
