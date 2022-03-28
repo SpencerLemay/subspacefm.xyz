@@ -28,7 +28,7 @@ function toggleTheme() {
               setTheme(theme);
               }
          } 
-   if (i == themes.length()) {
+   if (i == themes.length) {
        setTheme('theme-light');
    }
 
