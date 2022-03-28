@@ -22638,6 +22638,7 @@ var visualizerStart = function() {
         capStyle = '#000',
         meterNum = 800/ (10 + 2), //count of the meters
         capYPositionArray = []; ////store the vertical position of hte caps for the preivous frame
+    var gradient;
     ctx = canvas.getContext('2d'),
     gradient = ctx.createLinearGradient(0, 0, 0, 300);
     gradient.addColorStop(1, '#333');
