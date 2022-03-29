@@ -32,12 +32,12 @@
   }
     .theme-green {
     --background:  url('../dist/images/green.jpeg') no-repeat center center fixed;
-    --color-primary: rgba(54, 55, 60, 0.72);
-    --color-button: #717e80;
+    --color-primary: rgba(101, 152, 75, 0.44);
+    --color-button: #bfcabc;
     --color-accent: #352c2c;
-    --color-active: lightgrey;
-    --font-color: #bcbfbc;
-    --secondary-font: #bcbfbc;
+    --color-active: #cdd3df;
+    --font-color: #5d9147;
+    --secondary-font: #5d9147;
   }
     .theme-yellow {
     --background:  url('../dist/images/yellow.jpeg') no-repeat center center fixed;

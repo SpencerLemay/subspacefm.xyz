@@ -22699,7 +22699,13 @@ var visualizerStart = function() {
              mid= [0.5, '#c5bdc9'];
              top = [0,'#fff'];
              cap_color = '#fff';
-             break;                     
+             break;
+     case 'theme-green':
+             btm = [1,'#bfcabc']
+             mid= [0.5, '#96b68d'];
+             top = [0,'#fff'];
+             cap_color = '#538740';
+     break;                     
      }
     // we're ready to receive some data!
     var canvas = document.getElementById('canvas'),
