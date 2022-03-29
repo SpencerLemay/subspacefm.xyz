@@ -61,7 +61,14 @@ var visualizerStart = function() {
              mid= [0.5, '#96b68d'];
              top = [0,'#fff'];
              cap_color = '#538740';
-     break;                     
+     break; 
+     case 'theme-yellow':
+             btm = [1,'#723b04']
+             mid= [0.5, '#c89c4d'];
+             top = [0,'#c89c4d'];
+             cap_color = '#538740';
+     break; 
+
      }
     // we're ready to receive some data!
     var canvas = document.getElementById('canvas'),
