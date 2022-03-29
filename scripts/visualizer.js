@@ -20,6 +20,7 @@ window.AudioContext = window.AudioContext || window.webkitAudioContext || window
 var visualizerStart = function() {
    //breaks chrome if not done 
    if (player.started != undefined){
+       delete player.started;
        delete ctx;
        delete analyser;
        delete audioSrc;
