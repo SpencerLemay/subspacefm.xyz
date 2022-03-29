@@ -10,6 +10,7 @@
     --color-active: lightgrey;
     --font-color: black;
     --secondary-font: black;
+    --logo: black;
   }
   .theme-dark {
     --background:  url('../dist/images/lenigma.webp') no-repeat center center fixed;
@@ -19,6 +20,7 @@
     --color-active: lightgrey;
     --font-color: #bcbfbc;
     --secondary-font: #bcbfbc;
+    --logo: white;
   }
     .theme-pink {
     --background:  url('../dist/images/pink.webp') no-repeat center center fixed;
@@ -29,6 +31,7 @@
     --color-active: #c5b0db;
     --font-color: #ac5fc2;
     --secondary-font: #ac5fc2;
+    --logo: white;
   }
     .theme-green {
     --background:  url('../dist/images/green.jpeg') no-repeat center center fixed;
@@ -38,6 +41,7 @@
     --color-active: #cdd3df;
     --font-color: #5d9147;
     --secondary-font: #29421f;
+    --logo: white;
   }
     .theme-yellow {
     --background:  url('../dist/images/yellow.jpeg') no-repeat center center fixed;
@@ -47,6 +51,7 @@
     --color-active: lightgrey;
     --font-color: #bcbfbc;
     --secondary-font: #bcbfbc;
+    --logo: white;
   }
 
 html { 
@@ -126,14 +131,14 @@ color: var(--secondary-font);
   width: 35px;
 }
 #light{
-background-color: white;
+background-color: var(--logo);
 color: var(--color-button);
 border: 2px solid var(--color-button);
 }
 #dark{
 background-color: var(--color-button);
-color: white;
-border: 2px solid white;
+color: var(--logo);
+border: 2px solid var(--logo);
 }
 #dark:hover, #dark:active {
   background-color: lightgrey;
