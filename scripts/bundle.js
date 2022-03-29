@@ -22662,6 +22662,23 @@ window.AudioContext = window.AudioContext || window.webkitAudioContext || window
 
 
 var visualizerStart = function() {
+   //breaks chrome if not done 
+   if (player.started != undefined)
+       return;
+   player.started = 1;
+   
+   var ctx = new AudioContext();
+    var analyser = ctx.createAnalyser();
+    var audioSrc = ctx.createMediaElementSource(player.audioElement);
+
+    
+    // we have to connect the MediaElementSource with the analyser 
+    audioSrc.connect(analyser);
+    analyser.connect(ctx.destination);
+    // we could configure the analyser: e.g. analyser.fftSize (for further infos read the spec)
+    // analyser.fftSize = 64;
+    // frequencyBinCount tells you how many values you'll receive from the analyser
+    var frequencyData = new Uint8Array(analyser.frequencyBinCount);
      var top,mid,btm,cap_color;
      switch(localStorage.getItem('theme')){
      case 'theme-dark':
@@ -22700,26 +22717,6 @@ var visualizerStart = function() {
     gradient.addColorStop(btm[0],btm[1]);
     gradient.addColorStop(mid[0],mid[1]);
     gradient.addColorStop(top[0], top[1]);
-    
-
-   //breaks chrome if not done 
-   if (player.started != undefined)
-       return;
-   player.started = 1;
-
-   var ctx = new AudioContext();
-    var analyser = ctx.createAnalyser();
-    var audioSrc = ctx.createMediaElementSource(player.audioElement);
-
-    
-    // we have to connect the MediaElementSource with the analyser 
-    audioSrc.connect(analyser);
-    analyser.connect(ctx.destination);
-    // we could configure the analyser: e.g. analyser.fftSize (for further infos read the spec)
-    // analyser.fftSize = 64;
-    // frequencyBinCount tells you how many values you'll receive from the analyser
-    var frequencyData = new Uint8Array(analyser.frequencyBinCount);
-
 
 
     // loop
