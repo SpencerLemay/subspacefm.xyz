@@ -22630,13 +22630,13 @@ function toggleTheme() {
     $("#light").click(function(){
 
        theme = localStorage.getItem('theme');
-       for (var i = 0;i < themes.length;i++)  {
+       for (var i = 1;i < themes.length;i++)  {
              if (theme === themes[i]) {
                   setTheme(themes[--i]);
                   return;
                   }
              }       
-       setTheme(themes[themes.length]); 
+       setTheme(themes[themes.length - 1]); 
       }); 
     $("#dark").click(function(){
 
