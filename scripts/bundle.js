@@ -22662,6 +22662,13 @@ window.AudioContext = window.AudioContext || window.webkitAudioContext || window
 
 
 var visualizerStart = function() {
+    var ctx;
+    var analyser;
+    var audioSrc;
+    var frequencyData;
+         var top,mid,btm,cap_color;
+var canvas;
+var gradient;
    //breaks chrome if not done 
    if (player.started != 1){
        player.started = 0;
@@ -22673,9 +22680,9 @@ var visualizerStart = function() {
    }
    player.started = 1;
 
-   var ctx = new AudioContext();
-    var analyser = ctx.createAnalyser();
-    var audioSrc = ctx.createMediaElementSource(player.audioElement);
+    ctx = new AudioContext();
+    analyser = ctx.createAnalyser();
+    audioSrc = ctx.createMediaElementSource(player.audioElement);
 
     
     // we have to connect the MediaElementSource with the analyser 
@@ -22684,8 +22691,7 @@ var visualizerStart = function() {
     // we could configure the analyser: e.g. analyser.fftSize (for further infos read the spec)
     // analyser.fftSize = 64;
     // frequencyBinCount tells you how many values you'll receive from the analyser
-    var frequencyData = new Uint8Array(analyser.frequencyBinCount);
-     var top,mid,btm,cap_color;
+    frequencyData = new Uint8Array(analyser.frequencyBinCount);
      switch(localStorage.getItem('theme')){
      case 'theme-dark':
              btm = [1,'#717e80']
@@ -22708,7 +22714,7 @@ var visualizerStart = function() {
              break;                     
      }
     // we're ready to receive some data!
-    var canvas = document.getElementById('canvas'),
+    canvas = document.getElementById('canvas'),
         cwidth = canvas.width,
         cheight = canvas.height - 2,
         meterWidth = 10, //width of the meters in the spectrum
@@ -22717,7 +22723,7 @@ var visualizerStart = function() {
         capStyle = cap_color,
         meterNum = 800/ (10 + 2), //count of the meters
         capYPositionArray = []; ////store the vertical position of hte caps for the preivous frame
-    var gradient;
+    gradient;
     ctx = canvas.getContext('2d'),
     gradient = ctx.createLinearGradient(0, 0, 0, 300);
     gradient.addColorStop(btm[0],btm[1]);
