@@ -22618,7 +22618,7 @@ function toggleTheme() {
    ];
 
    var theme = localStorage.getItem('theme');
-   for (var i = 0;i < themes.length - 1;i++)  {
+   for (var i = 0;i < themes.length ;i++)  {
          if (theme === themes[i]) {
               setTheme(theme);
               }
@@ -22627,14 +22627,23 @@ function toggleTheme() {
        setTheme('theme-light');
    }
 
+    $("#light").click(function(){
 
+       theme = localStorage.getItem('theme');
+       for (var i = 0;i < themes.length -1;i++)  {
+             if (theme === themes[i]) {
+                  setTheme(themes[--i]);
+                  return;
+                  }
+             }       
+       setTheme('theme-light'); 
+      }); 
     $("#dark").click(function(){
 
        theme = localStorage.getItem('theme');
-       for (var i = 0;i < themes.length - 1;i++)  {
+       for (var i = 0;i < themes.length -1;i++)  {
              if (theme === themes[i]) {
                   setTheme(themes[++i]);
-                  console.log
                   return;
                   }
              }       
