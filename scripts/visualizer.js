@@ -19,10 +19,15 @@ window.AudioContext = window.AudioContext || window.webkitAudioContext || window
 
 var visualizerStart = function() {
    //breaks chrome if not done 
-   if (player.started != undefined)
-       return;
+   if (player.started != undefined){
+       delete ctx;
+       delete analyser;
+       delete audioSrc;
+       delete canvas;
+       delete gradient;
+   }
    player.started = 1;
-   
+
    var ctx = new AudioContext();
     var analyser = ctx.createAnalyser();
     var audioSrc = ctx.createMediaElementSource(player.audioElement);
