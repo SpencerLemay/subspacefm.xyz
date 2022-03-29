@@ -22662,27 +22662,14 @@ window.AudioContext = window.AudioContext || window.webkitAudioContext || window
 
 
 var visualizerStart = function() {
-    var ctx;
-    var analyser;
-    var audioSrc;
-    var frequencyData;
-         var top,mid,btm,cap_color;
-var canvas;
-var gradient;
-   //breaks chrome if not done 
-   if (player.started != 1){
-       player.started = 0;
-       delete ctx;
-       delete analyser;
-       delete audioSrc;
-       delete canvas;
-       delete gradient;
-   }
+   //breaks chrome if not here
+    
+   if (player.started != undefined)
+       return;
    player.started = 1;
-
-    ctx = new AudioContext();
-    analyser = ctx.createAnalyser();
-    audioSrc = ctx.createMediaElementSource(player.audioElement);
+   var ctx = new AudioContext();
+    var analyser = ctx.createAnalyser();
+    var audioSrc = ctx.createMediaElementSource(player.audioElement);
 
     
     // we have to connect the MediaElementSource with the analyser 
@@ -22691,7 +22678,8 @@ var gradient;
     // we could configure the analyser: e.g. analyser.fftSize (for further infos read the spec)
     // analyser.fftSize = 64;
     // frequencyBinCount tells you how many values you'll receive from the analyser
-    frequencyData = new Uint8Array(analyser.frequencyBinCount);
+    var frequencyData = new Uint8Array(analyser.frequencyBinCount);
+     var top,mid,btm,cap_color;
      switch(localStorage.getItem('theme')){
      case 'theme-dark':
              btm = [1,'#717e80']
@@ -22714,7 +22702,7 @@ var gradient;
              break;                     
      }
     // we're ready to receive some data!
-    canvas = document.getElementById('canvas'),
+    var canvas = document.getElementById('canvas'),
         cwidth = canvas.width,
         cheight = canvas.height - 2,
         meterWidth = 10, //width of the meters in the spectrum
@@ -22723,7 +22711,7 @@ var gradient;
         capStyle = cap_color,
         meterNum = 800/ (10 + 2), //count of the meters
         capYPositionArray = []; ////store the vertical position of hte caps for the preivous frame
-    gradient;
+    var gradient;
     ctx = canvas.getContext('2d'),
     gradient = ctx.createLinearGradient(0, 0, 0, 300);
     gradient.addColorStop(btm[0],btm[1]);
