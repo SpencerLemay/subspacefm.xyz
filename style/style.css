@@ -45,11 +45,11 @@
   }
     .theme-yellow {
     --background:  url('../dist/images/yellow.jpeg') no-repeat center center fixed;
-    --color-primary: rgba(54, 55, 60, 0.72);
-    --color-button: #717e80;
+    --color-primary: rgba(180, 133, 57, 0.62);
+    --color-button: #c89c4d;
     --color-accent: #352c2c;
     --color-active: lightgrey;
-    --font-color: #bcbfbc;
+    --font-color: #723b04;
     --secondary-font: #bcbfbc;
     --logo: white;
   }
