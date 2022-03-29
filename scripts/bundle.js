@@ -22769,9 +22769,6 @@ var visualizerStart = function() {
 };
 $(function(){
 
-$("#dark").click(function(){
-   visualizerStart();
-}); 
 $("#play").click(function(){
    visualizerStart();
 }); 

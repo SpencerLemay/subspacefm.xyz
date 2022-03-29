@@ -140,7 +140,7 @@ background-color: var(--color-button);
 color: var(--logo);
 border: 2px solid var(--logo);
 }
-#dark:hover, #dark:active {
+#light:hover, #light:active,#dark:hover, #dark:active {
   background-color: lightgrey;
 }
 a:link, a:visited {
