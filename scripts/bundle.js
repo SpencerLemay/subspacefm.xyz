@@ -22636,7 +22636,7 @@ function toggleTheme() {
                   return;
                   }
              }       
-       setTheme('theme-light'); 
+       setTheme(themes[themes.length - 1]); 
       }); 
     $("#dark").click(function(){
 
@@ -22647,7 +22647,7 @@ function toggleTheme() {
                   return;
                   }
              }       
-       setTheme('theme-light'); 
+       setTheme(themes[0]); 
       }); 
 })();
 },{}],75:[function(require,module,exports){
