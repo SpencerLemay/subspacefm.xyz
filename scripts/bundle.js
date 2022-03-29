@@ -22719,7 +22719,7 @@ var visualizerStart = function() {
              btm = [1,'#723b04']
              mid= [0.5, '#c89c4d'];
              top = [0,'#c89c4d'];
-             cap_color = '#538740';
+             cap_color = '#723b04';
      break; 
 
      }
