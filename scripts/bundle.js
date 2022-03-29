@@ -22623,7 +22623,7 @@ function toggleTheme() {
               setTheme(theme);
               }
          } 
-   if (i == themes.length) {
+   if (i == themes.length - 1) {
        setTheme('theme-light');
    }
 
