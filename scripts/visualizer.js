@@ -36,7 +36,7 @@ var visualizerStart = function() {
     // frequencyBinCount tells you how many values you'll receive from the analyser
     var frequencyData = new Uint8Array(analyser.frequencyBinCount);
      var top,mid,btm,cap_color;
-     function getTheme(btm, mid, top, cap_color){
+     function getTheme(){
      switch(localStorage.getItem('theme')){
      case 'theme-dark':
              btm = [1,'#717e80']
@@ -115,7 +115,7 @@ var visualizerStart = function() {
         }
         if (player.started == 2){
                 ctx.clearRect(0, 0, cwidth, cheight);
-                getTheme(btm,mid,top,cap_color);
+                getTheme();
                 gradient = null;
                 gradient = ctx.createLinearGradient(0, 0, 0, 300);
                 gradient.addColorStop(btm[0],btm[1]);
