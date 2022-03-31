@@ -38,9 +38,6 @@ function toggleTheme() {
        for (var i = 1;i < themes.length;i++)  {
              if (theme === themes[i]) {
                   setTheme(themes[--i]);
-                  if (player.state === "loading" || player.state === "playing"){
-                     visualizerStart();
-                  }
                   return;
                   }
              }       
@@ -52,9 +49,6 @@ function toggleTheme() {
        for (var i = 0;i < themes.length -1;i++)  {
              if (theme === themes[i]) {
                   setTheme(themes[++i]);
-                   if (player.state === "loading" || player.state === "playing"){
-                     visualizerStart();
-                  }
                   return;
                   }
              }       

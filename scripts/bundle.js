@@ -22633,9 +22633,6 @@ function toggleTheme() {
        for (var i = 1;i < themes.length;i++)  {
              if (theme === themes[i]) {
                   setTheme(themes[--i]);
-                  if (player.state === "loading" || player.state === "playing"){
-                     visualizerStart();
-                  }
                   return;
                   }
              }       
@@ -22647,9 +22644,6 @@ function toggleTheme() {
        for (var i = 0;i < themes.length -1;i++)  {
              if (theme === themes[i]) {
                   setTheme(themes[++i]);
-                   if (player.state === "loading" || player.state === "playing"){
-                     visualizerStart();
-                  }
                   return;
                   }
              }       
@@ -22677,12 +22671,9 @@ window.AudioContext = window.AudioContext || window.webkitAudioContext || window
 
 
 var visualizerStart = function() {
-   while (player.started == 0) {
-           
-              }
-
+   
    //breaks chrome if not here
-   if (player.started == 1)
+   if (player.started != 'undefined')
        return;
    player.started = 1;
    var ctx = new AudioContext();
@@ -22757,11 +22748,9 @@ var visualizerStart = function() {
         var step = Math.round(array.length / meterNum); //sample limited data from the total array
         ctx.clearRect(0, 0, cwidth, cheight);
         for (var i = 0; i < meterNum; i++) {
-
-            if (player.stared == 0){
-                player.started = 2;
-                return;
-            }
+            if (player.state === "stopping" || player.state === "stopped"){
+                     visualizerStart();
+                  }
             var value = array[i * step];
             if (capYPositionArray.length < Math.round(meterNum)) {
                 capYPositionArray.push(value);
@@ -22788,7 +22777,6 @@ $("#play").click(function(){
 }); 
 
 $("#stop").click(function(){
-    player.started = 0;
 });
 });
 },{}]},{},[73,75,74]);
