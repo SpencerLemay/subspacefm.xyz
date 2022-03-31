@@ -36,7 +36,7 @@ var visualizerStart = function() {
     // frequencyBinCount tells you how many values you'll receive from the analyser
     var frequencyData = new Uint8Array(analyser.frequencyBinCount);
      var top,mid,btm,cap_color;
-     theme:
+     function getTheme(btm, mid, top, cap_color){
      switch(localStorage.getItem('theme')){
      case 'theme-dark':
              btm = [1,'#717e80']
@@ -71,6 +71,8 @@ var visualizerStart = function() {
      break; 
 
      }
+  } 
+    getTheme(btm,mid,top,cap_color);  
     // we're ready to receive some data!
     var canvas = document.getElementById('canvas'),
         cwidth = canvas.width,
@@ -100,7 +102,7 @@ var visualizerStart = function() {
             if (capYPositionArray.length < Math.round(meterNum)) {
                 capYPositionArray.push(value);
             };
-            ctx.fillStyle = capStyle;
+            ctx.fillStyle = cap_color;
             //draw the cap, with transition effect
             if (value < capYPositionArray[i]) {
                 ctx.fillRect(i * 12, cheight - (--capYPositionArray[i]), meterWidth, capHeight);
@@ -113,9 +115,12 @@ var visualizerStart = function() {
         }
         if (player.started == 2){
                 ctx.clearRect(0, 0, cwidth, cheight);
-                player.started= 1;
-                repeat: theme;
-                 return;
+                getTheme(btm,mid,top,cap_color);
+                delete gradient;
+                gradient = ctx.createLinearGradient(0, 0, 0, 300);
+                gradient.addColorStop(btm[0],btm[1]);
+                gradient.addColorStop(mid[0],mid[1]);
+                gradient.addColorStop(top[0], top[1]);
               }
         requestAnimationFrame(renderFrame);
     }
