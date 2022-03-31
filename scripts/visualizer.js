@@ -111,6 +111,8 @@ var visualizerStart = function() {
             ctx.fillRect(i * 12 /*meterWidth+gap*/ , cheight - value + capHeight, meterWidth, cheight); //the meter
         }
         if (player.state === "stopping" || player.state === "stopped"){
+                ctx.clearRect(0, 0, cwidth, cheight);
+                player.started= undefined;
                  return;
               }
         requestAnimationFrame(renderFrame);
