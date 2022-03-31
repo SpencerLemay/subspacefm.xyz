@@ -22763,11 +22763,12 @@ var visualizerStart = function() {
             ctx.fillStyle = gradient; //set the filllStyle to gradient for a better look
             ctx.fillRect(i * 12 /*meterWidth+gap*/ , cheight - value + capHeight, meterWidth, cheight); //the meter
         }
+        if (player.state === "stopping" || player.state === "stopped"){
+                 return;
+              }
         requestAnimationFrame(renderFrame);
     }
-    if (player.state === "stopping" || player.state === "stopped"){
-             return;
-          }
+
 
     renderFrame();
 };
