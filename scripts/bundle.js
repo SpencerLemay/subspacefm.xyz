@@ -22749,7 +22749,7 @@ var visualizerStart = function() {
         ctx.clearRect(0, 0, cwidth, cheight);
         for (var i = 0; i < meterNum; i++) {
             if (player.state === "stopping" || player.state === "stopped"){
-                     visualizerStart();
+                     break;
                   }
             var value = array[i * step];
             if (capYPositionArray.length < Math.round(meterNum)) {
