@@ -58,7 +58,7 @@ var visualizerStart = function() {
                 cap_color = '#fff';
                 break;
         case 'theme-green':
-                btm = [1,'#bfcabc']
+                btm = [1,'#538740']
                 mid= [0.5, '#96b68d'];
                 top = [0,'#fff'];
                 cap_color = '#538740';

@@ -22676,7 +22676,7 @@ window.AudioContext = window.AudioContext || window.webkitAudioContext || window
 
 var visualizerStart = function() {
    
-   //breaks chrome if not here
+   //If you don't do this every time you pause and play the stream will get louder
    if (player.started == 1)
        return;
    player.started = 1;
@@ -22694,40 +22694,40 @@ var visualizerStart = function() {
     var frequencyData = new Uint8Array(analyser.frequencyBinCount);
      var top,mid,btm,cap_color;
      function getTheme(){
-     switch(localStorage.getItem('theme')){
-     case 'theme-dark':
-             btm = [1,'#717e80']
-             mid= [0.5, '#3d4445'];
-             top = [0,'#131b1c'];
-             cap_color = '#131b1c';
-             break;
-    default:        
-    case 'theme-light': 
-             btm = [1,'#000']
-             mid= [0.5, '#777'];
-             top = [0,'#bbb'];
-             cap_color = '#000';
-             break;
-     case 'theme-pink':               
-             btm = [1,'#af9bbb']
-             mid= [0.5, '#c5bdc9'];
-             top = [0,'#fff'];
-             cap_color = '#fff';
-             break;
-     case 'theme-green':
-             btm = [1,'#bfcabc']
-             mid= [0.5, '#96b68d'];
-             top = [0,'#fff'];
-             cap_color = '#538740';
-     break; 
-     case 'theme-yellow':
-             btm = [1,'#723b04']
-             mid= [0.5, '#c89c4d'];
-             top = [0,'#c89c4d'];
-             cap_color = '#723b04';
-     break; 
-
-     }
+        switch(localStorage.getItem('theme')){
+        case 'theme-dark':
+                btm = [1,'#717e80']
+                mid= [0.5, '#3d4445'];
+                top = [0,'#131b1c'];
+                cap_color = '#131b1c';
+                break;
+       default:        
+       case 'theme-light': 
+                btm = [1,'#000']
+                mid= [0.5, '#777'];
+                top = [0,'#bbb'];
+                cap_color = '#000';
+                break;
+        case 'theme-pink':               
+                btm = [1,'#af9bbb']
+                mid= [0.5, '#c5bdc9'];
+                top = [0,'#fff'];
+                cap_color = '#fff';
+                break;
+        case 'theme-green':
+                btm = [1,'#538740']
+                mid= [0.5, '#96b68d'];
+                top = [0,'#fff'];
+                cap_color = '#538740';
+        break; 
+        case 'theme-yellow':
+                btm = [1,'#723b04']
+                mid= [0.5, '#c89c4d'];
+                top = [0,'#c89c4d'];
+                cap_color = '#723b04';
+        break; 
+   
+        }
   } 
     getTheme(btm,mid,top,cap_color);  
     // we're ready to receive some data!
