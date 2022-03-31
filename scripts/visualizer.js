@@ -20,7 +20,7 @@ window.AudioContext = window.AudioContext || window.webkitAudioContext || window
 var visualizerStart = function() {
    
    //breaks chrome if not here
-   if (player.started != undefined)
+   if (player.started != 1)
        return;
    player.started = 1;
    var ctx = new AudioContext();
@@ -36,6 +36,7 @@ var visualizerStart = function() {
     // frequencyBinCount tells you how many values you'll receive from the analyser
     var frequencyData = new Uint8Array(analyser.frequencyBinCount);
      var top,mid,btm,cap_color;
+     theme:
      switch(localStorage.getItem('theme')){
      case 'theme-dark':
              btm = [1,'#717e80']
@@ -110,9 +111,10 @@ var visualizerStart = function() {
             ctx.fillStyle = gradient; //set the filllStyle to gradient for a better look
             ctx.fillRect(i * 12 /*meterWidth+gap*/ , cheight - value + capHeight, meterWidth, cheight); //the meter
         }
-        if (player.state === "stopping" || player.state === "stopped"){
+        if (player.started == 2){
                 ctx.clearRect(0, 0, cwidth, cheight);
-                player.started= undefined;
+                player.started= 1;
+                repeat: theme;
                  return;
               }
         requestAnimationFrame(renderFrame);
