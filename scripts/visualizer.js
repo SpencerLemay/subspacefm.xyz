@@ -20,7 +20,7 @@ window.AudioContext = window.AudioContext || window.webkitAudioContext || window
 var visualizerStart = function() {
    
    //breaks chrome if not here
-   if (player.started != 1)
+   if (player.started == 1)
        return;
    player.started = 1;
    var ctx = new AudioContext();
