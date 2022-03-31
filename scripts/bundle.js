@@ -22673,7 +22673,7 @@ window.AudioContext = window.AudioContext || window.webkitAudioContext || window
 var visualizerStart = function() {
    
    //breaks chrome if not here
-   if (player.started != 'undefined')
+   if (player.started != undefined)
        return;
    player.started = 1;
    var ctx = new AudioContext();
@@ -22776,7 +22776,6 @@ $("#play").click(function(){
    visualizerStart();
 }); 
 
-$("#stop").click(function(){
-});
+
 });
 },{}]},{},[73,75,74]);
