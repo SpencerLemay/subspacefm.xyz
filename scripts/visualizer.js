@@ -116,7 +116,7 @@ var visualizerStart = function() {
         if (player.started == 2){
                 ctx.clearRect(0, 0, cwidth, cheight);
                 getTheme(btm,mid,top,cap_color);
-                delete gradient;
+                gradient = null;
                 gradient = ctx.createLinearGradient(0, 0, 0, 300);
                 gradient.addColorStop(btm[0],btm[1]);
                 gradient.addColorStop(mid[0],mid[1]);
