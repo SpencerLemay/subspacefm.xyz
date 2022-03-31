@@ -22776,6 +22776,7 @@ var visualizerStart = function() {
                 gradient.addColorStop(btm[0],btm[1]);
                 gradient.addColorStop(mid[0],mid[1]);
                 gradient.addColorStop(top[0], top[1]);
+                player.started = 1;
               }
         requestAnimationFrame(renderFrame);
     }
