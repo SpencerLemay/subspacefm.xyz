@@ -95,9 +95,6 @@ var visualizerStart = function() {
         var step = Math.round(array.length / meterNum); //sample limited data from the total array
         ctx.clearRect(0, 0, cwidth, cheight);
         for (var i = 0; i < meterNum; i++) {
-            if (player.state === "stopping" || player.state === "stopped"){
-                     break;
-                  }
             var value = array[i * step];
             if (capYPositionArray.length < Math.round(meterNum)) {
                 capYPositionArray.push(value);
@@ -115,6 +112,10 @@ var visualizerStart = function() {
         }
         requestAnimationFrame(renderFrame);
     }
+    if (player.state === "stopping" || player.state === "stopped"){
+             return;
+          }
+
     renderFrame();
 };
 $(function(){
