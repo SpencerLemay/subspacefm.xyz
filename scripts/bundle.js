@@ -22638,6 +22638,7 @@ function toggleTheme() {
                   }
              }       
        setTheme(themes[themes.length - 1]); 
+       player.started = 2;
       }); 
     $("#dark").click(function(){
 
@@ -22649,7 +22650,8 @@ function toggleTheme() {
                   return;
                   }
              }       
-       setTheme(themes[0]); 
+       setTheme(themes[0]);
+       player.started = 2; 
       }); 
 })();
 },{}],75:[function(require,module,exports){
