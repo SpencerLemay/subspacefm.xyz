@@ -1,4 +1,39 @@
 (function(){function r(e,n,t){function o(i,f){if(!n[i]){if(!e[i]){var c="function"==typeof require&&require;if(!f&&c)return c(i,!0);if(u)return u(i,!0);var a=new Error("Cannot find module '"+i+"'");throw a.code="MODULE_NOT_FOUND",a}var p=n[i]={exports:{}};e[i][0].call(p.exports,function(r){var n=e[i][1][r];return o(n||r)},p,p.exports,r,e,n,t)}return n[i].exports}for(var u="function"==typeof require&&require,i=0;i<t.length;i++)o(t[i]);return o}return r})()({1:[function(require,module,exports){
+const socket = io('http://subspacefm.xyz/chat')
+const messageContainer = document.getElementById('message-container')
+const messageForm = document.getElementById('send-container')
+const messageInput = document.getElementById('message-input')
+
+const name = prompt('What is your name?')
+appendMessage('You joined')
+socket.emit('new-user', name)
+
+socket.on('chat-message', data => {
+  appendMessage(`${data.name}: ${data.message}`)
+})
+
+socket.on('user-connected', name => {
+  appendMessage(`${name} connected`)
+})
+
+socket.on('user-disconnected', name => {
+  appendMessage(`${name} disconnected`)
+})
+
+messageForm.addEventListener('submit', e => {
+  e.preventDefault()
+  const message = messageInput.value
+  appendMessage(`You: ${message}`)
+  socket.emit('send-chat-message', message)
+  messageInput.value = ''
+})
+
+function appendMessage(message) {
+  const messageElement = document.createElement('div')
+  messageElement.innerText = message
+  messageContainer.append(messageElement)
+}
+},{}],2:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -23,7 +58,7 @@ var _WASMAudioDecoderWorker = _interopRequireDefault(require("./src/WASMAudioDec
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-},{"./src/WASMAudioDecoderCommon.js":2,"./src/WASMAudioDecoderWorker.js":3}],2:[function(require,module,exports){
+},{"./src/WASMAudioDecoderCommon.js":3,"./src/WASMAudioDecoderWorker.js":4}],3:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -560,7 +595,7 @@ class WASMAudioDecoderCommon {
 
 exports.default = WASMAudioDecoderCommon;
 
-},{}],3:[function(require,module,exports){
+},{}],4:[function(require,module,exports){
 (function (Buffer){(function (){
 "use strict";
 
@@ -703,7 +738,7 @@ class WASMAudioDecoderWorker extends _webWorker.default {
 exports.default = WASMAudioDecoderWorker;
 
 }).call(this)}).call(this,require("buffer").Buffer)
-},{"./WASMAudioDecoderCommon.js":2,"buffer":5,"web-worker":72}],4:[function(require,module,exports){
+},{"./WASMAudioDecoderCommon.js":3,"buffer":6,"web-worker":73}],5:[function(require,module,exports){
 'use strict'
 
 exports.byteLength = byteLength
@@ -855,7 +890,7 @@ function fromByteArray (uint8) {
   return parts.join('')
 }
 
-},{}],5:[function(require,module,exports){
+},{}],6:[function(require,module,exports){
 (function (Buffer){(function (){
 /*!
  * The buffer module from node.js, for the browser.
@@ -2636,7 +2671,7 @@ function numberIsNaN (obj) {
 }
 
 }).call(this)}).call(this,require("buffer").Buffer)
-},{"base64-js":4,"buffer":5,"ieee754":53}],6:[function(require,module,exports){
+},{"base64-js":5,"buffer":6,"ieee754":54}],7:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -2651,7 +2686,7 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 var _default = _CodecParser.default;
 exports.default = _default;
 
-},{"./src/CodecParser.js":7}],7:[function(require,module,exports){
+},{"./src/CodecParser.js":8}],8:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -2898,7 +2933,7 @@ class CodecParser {
 
 exports.default = CodecParser;
 
-},{"./codecs/HeaderCache.js":10,"./codecs/aac/AACParser.js":14,"./codecs/flac/FLACParser.js":17,"./codecs/mpeg/MPEGParser.js":20,"./containers/ogg/OggParser.js":31,"./utilities.js":34}],8:[function(require,module,exports){
+},{"./codecs/HeaderCache.js":11,"./codecs/aac/AACParser.js":15,"./codecs/flac/FLACParser.js":18,"./codecs/mpeg/MPEGParser.js":21,"./containers/ogg/OggParser.js":32,"./utilities.js":35}],9:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -2961,7 +2996,7 @@ class CodecFrame extends _Frame.default {
 
 exports.default = CodecFrame;
 
-},{"../containers/Frame.js":28,"../globals.js":32}],9:[function(require,module,exports){
+},{"../containers/Frame.js":29,"../globals.js":33}],10:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -3007,7 +3042,7 @@ class CodecHeader {
 
 exports.default = CodecHeader;
 
-},{"../globals.js":32}],10:[function(require,module,exports){
+},{"../globals.js":33}],11:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -3099,7 +3134,7 @@ class HeaderCache {
 
 exports.default = HeaderCache;
 
-},{}],11:[function(require,module,exports){
+},{}],12:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -3186,7 +3221,7 @@ class Parser {
 
 exports.default = Parser;
 
-},{"../globals.js":32}],12:[function(require,module,exports){
+},{"../globals.js":33}],13:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -3230,7 +3265,7 @@ class AACFrame extends _CodecFrame.default {
 
 exports.default = AACFrame;
 
-},{"../CodecFrame.js":8,"./AACHeader.js":13}],13:[function(require,module,exports){
+},{"../CodecFrame.js":9,"./AACHeader.js":14}],14:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -3498,7 +3533,7 @@ class AACHeader extends _CodecHeader.default {
 
 exports.default = AACHeader;
 
-},{"../../constants.js":27,"../../globals.js":32,"../../utilities.js":34,"../CodecHeader.js":9}],14:[function(require,module,exports){
+},{"../../constants.js":28,"../../globals.js":33,"../../utilities.js":35,"../CodecHeader.js":10}],15:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -3551,7 +3586,7 @@ class AACParser extends _Parser.default {
 
 exports.default = AACParser;
 
-},{"../Parser.js":11,"./AACFrame.js":12,"./AACHeader.js":13}],15:[function(require,module,exports){
+},{"../Parser.js":12,"./AACFrame.js":13,"./AACHeader.js":14}],16:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -3607,7 +3642,7 @@ class FLACFrame extends _CodecFrame.default {
 
 exports.default = FLACFrame;
 
-},{"../../globals.js":32,"../../utilities.js":34,"../CodecFrame.js":8}],16:[function(require,module,exports){
+},{"../../globals.js":33,"../../utilities.js":35,"../CodecFrame.js":9}],17:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -4008,7 +4043,7 @@ class FLACHeader extends _CodecHeader.default {
 
 exports.default = FLACHeader;
 
-},{"../../constants.js":27,"../../utilities.js":34,"../CodecHeader.js":9}],17:[function(require,module,exports){
+},{"../../constants.js":28,"../../utilities.js":35,"../CodecHeader.js":10}],18:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -4149,7 +4184,7 @@ class FLACParser extends _Parser.default {
 
 exports.default = FLACParser;
 
-},{"../../globals.js":32,"../Parser.js":11,"./FLACFrame.js":15,"./FLACHeader.js":16}],18:[function(require,module,exports){
+},{"../../globals.js":33,"../Parser.js":12,"./FLACFrame.js":16,"./FLACHeader.js":17}],19:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -4193,7 +4228,7 @@ class MPEGFrame extends _CodecFrame.default {
 
 exports.default = MPEGFrame;
 
-},{"../CodecFrame.js":8,"./MPEGHeader.js":19}],19:[function(require,module,exports){
+},{"../CodecFrame.js":9,"./MPEGHeader.js":20}],20:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -4496,7 +4531,7 @@ class MPEGHeader extends _CodecHeader.default {
 
 exports.default = MPEGHeader;
 
-},{"../../constants.js":27,"../../metadata/ID3v2.js":33,"../../utilities.js":34,"../CodecHeader.js":9}],20:[function(require,module,exports){
+},{"../../constants.js":28,"../../metadata/ID3v2.js":34,"../../utilities.js":35,"../CodecHeader.js":10}],21:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -4549,7 +4584,7 @@ class MPEGParser extends _Parser.default {
 
 exports.default = MPEGParser;
 
-},{"../Parser.js":11,"./MPEGFrame.js":18,"./MPEGHeader.js":19}],21:[function(require,module,exports){
+},{"../Parser.js":12,"./MPEGFrame.js":19,"./MPEGHeader.js":20}],22:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -4587,7 +4622,7 @@ class OpusFrame extends _CodecFrame.default {
 
 exports.default = OpusFrame;
 
-},{"../CodecFrame.js":8}],22:[function(require,module,exports){
+},{"../CodecFrame.js":9}],23:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -4984,7 +5019,7 @@ class OpusHeader extends _CodecHeader.default {
 
 exports.default = OpusHeader;
 
-},{"../../constants.js":27,"../../utilities.js":34,"../CodecHeader.js":9}],23:[function(require,module,exports){
+},{"../../constants.js":28,"../../utilities.js":35,"../CodecHeader.js":10}],24:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -5059,7 +5094,7 @@ class OpusParser extends _Parser.default {
 
 exports.default = OpusParser;
 
-},{"../../globals.js":32,"../Parser.js":11,"./OpusFrame.js":21,"./OpusHeader.js":22}],24:[function(require,module,exports){
+},{"../../globals.js":33,"../Parser.js":12,"./OpusFrame.js":22,"./OpusHeader.js":23}],25:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -5097,7 +5132,7 @@ class VorbisFrame extends _CodecFrame.default {
 
 exports.default = VorbisFrame;
 
-},{"../CodecFrame.js":8}],25:[function(require,module,exports){
+},{"../CodecFrame.js":9}],26:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -5244,7 +5279,7 @@ class VorbisHeader extends _CodecHeader.default {
 
 exports.default = VorbisHeader;
 
-},{"../../constants.js":27,"../../utilities.js":34,"../CodecHeader.js":9}],26:[function(require,module,exports){
+},{"../../constants.js":28,"../../utilities.js":35,"../CodecHeader.js":10}],27:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -5442,7 +5477,7 @@ class VorbisParser extends _Parser.default {
 
 exports.default = VorbisParser;
 
-},{"../../globals.js":32,"../../utilities.js":34,"../Parser.js":11,"./VorbisFrame.js":24,"./VorbisHeader.js":25}],27:[function(require,module,exports){
+},{"../../globals.js":33,"../../utilities.js":35,"../Parser.js":12,"./VorbisFrame.js":25,"./VorbisHeader.js":26}],28:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -5550,7 +5585,7 @@ exports.rate8000 = rate8000;
 const rate7350 = 7350;
 exports.rate7350 = rate7350;
 
-},{}],28:[function(require,module,exports){
+},{}],29:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -5594,7 +5629,7 @@ class Frame {
 
 exports.default = Frame;
 
-},{"../globals.js":32}],29:[function(require,module,exports){
+},{"../globals.js":33}],30:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -5665,7 +5700,7 @@ class OggPage extends _Frame.default {
 
 exports.default = OggPage;
 
-},{"../../globals.js":32,"../Frame.js":28,"./OggPageHeader.js":30}],30:[function(require,module,exports){
+},{"../../globals.js":33,"../Frame.js":29,"./OggPageHeader.js":31}],31:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -5824,7 +5859,7 @@ class OggPageHeader {
 
 exports.default = OggPageHeader;
 
-},{"../../globals.js":32}],31:[function(require,module,exports){
+},{"../../globals.js":33}],32:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -5964,7 +5999,7 @@ class OggParser extends _Parser.default {
 
 exports.default = OggParser;
 
-},{"../../codecs/Parser.js":11,"../../codecs/flac/FLACParser.js":17,"../../codecs/opus/OpusParser.js":23,"../../codecs/vorbis/VorbisParser.js":26,"../../globals.js":32,"../../utilities.js":34,"./OggPage.js":29,"./OggPageHeader.js":30}],32:[function(require,module,exports){
+},{"../../codecs/Parser.js":12,"../../codecs/flac/FLACParser.js":18,"../../codecs/opus/OpusParser.js":24,"../../codecs/vorbis/VorbisParser.js":27,"../../globals.js":33,"../../utilities.js":35,"./OggPage.js":30,"./OggPageHeader.js":31}],33:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -5976,7 +6011,7 @@ exports.headerStore = headerStore;
 const frameStore = new WeakMap();
 exports.frameStore = frameStore;
 
-},{}],33:[function(require,module,exports){
+},{}],34:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -6055,7 +6090,7 @@ class ID3v2 {
 
 exports.default = ID3v2;
 
-},{}],34:[function(require,module,exports){
+},{}],35:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -6197,7 +6232,7 @@ class BitReader {
 
 exports.BitReader = BitReader;
 
-},{}],35:[function(require,module,exports){
+},{}],36:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -6230,7 +6265,7 @@ var _IcecastReadableStream = _interopRequireDefault(require("./src/IcecastReadab
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-},{"./src/IcecastMetadataQueue.js":36,"./src/IcecastMetadataReader.js":37,"./src/IcecastReadableStream.js":38}],36:[function(require,module,exports){
+},{"./src/IcecastMetadataQueue.js":37,"./src/IcecastMetadataReader.js":38,"./src/IcecastReadableStream.js":39}],37:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -6379,7 +6414,7 @@ class IcecastMetadataQueue {
 
 exports.default = IcecastMetadataQueue;
 
-},{}],37:[function(require,module,exports){
+},{}],38:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -6512,7 +6547,7 @@ class IcecastMetadataReader {
 
 exports.default = IcecastMetadataReader;
 
-},{"./MetadataParser/DualMetadataParser.js":39,"./MetadataParser/IcyMetadataParser.js":40,"./MetadataParser/MetadataParser.js":41,"./MetadataParser/OggMetadataParser.js":42}],38:[function(require,module,exports){
+},{"./MetadataParser/DualMetadataParser.js":40,"./MetadataParser/IcyMetadataParser.js":41,"./MetadataParser/MetadataParser.js":42,"./MetadataParser/OggMetadataParser.js":43}],39:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -6626,7 +6661,7 @@ class IcecastReadableStream {
 
 exports.default = IcecastReadableStream;
 
-},{"./IcecastMetadataReader.js":37}],39:[function(require,module,exports){
+},{"./IcecastMetadataReader.js":38}],40:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -6718,7 +6753,7 @@ class DualMetadataParser {
 
 exports.default = DualMetadataParser;
 
-},{"./IcyMetadataParser.js":40,"./OggMetadataParser.js":42}],40:[function(require,module,exports){
+},{"./IcyMetadataParser.js":41,"./OggMetadataParser.js":43}],41:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -6875,7 +6910,7 @@ class IcyMetadataParser extends _MetadataParser.default {
 
 exports.default = IcyMetadataParser;
 
-},{"./MetadataParser.js":41}],41:[function(require,module,exports){
+},{"./MetadataParser.js":42}],42:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -7058,7 +7093,7 @@ class MetadataParser {
 
 exports.default = MetadataParser;
 
-},{"./Stats.js":43}],42:[function(require,module,exports){
+},{"./Stats.js":44}],43:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -7282,7 +7317,7 @@ class OggMetadataParser extends _MetadataParser.default {
 
 exports.default = OggMetadataParser;
 
-},{"./MetadataParser.js":41}],43:[function(require,module,exports){
+},{"./MetadataParser.js":42}],44:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -7364,7 +7399,7 @@ class Stats {
 
 exports.default = Stats;
 
-},{}],44:[function(require,module,exports){
+},{}],45:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -7428,7 +7463,7 @@ class EventTargetPolyfill {
 
 exports.default = EventTargetPolyfill;
 
-},{}],45:[function(require,module,exports){
+},{}],46:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -7553,7 +7588,7 @@ class FrameQueue {
 
 exports.default = FrameQueue;
 
-},{"./global.js":48}],46:[function(require,module,exports){
+},{"./global.js":49}],47:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -7987,7 +8022,7 @@ class IcecastMetadataPlayer extends EventClass {
 
 exports.default = IcecastMetadataPlayer;
 
-},{"./EventTargetPolyfill.js":44,"./PlayerFactory.js":47,"./global.js":48,"./players/HTML5Player.js":49,"./players/MediaSourcePlayer.js":50,"./players/WebAudioPlayer.js":52,"icecast-metadata-js":35}],47:[function(require,module,exports){
+},{"./EventTargetPolyfill.js":45,"./PlayerFactory.js":48,"./global.js":49,"./players/HTML5Player.js":50,"./players/MediaSourcePlayer.js":51,"./players/WebAudioPlayer.js":53,"icecast-metadata-js":36}],48:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -8152,7 +8187,7 @@ class PlayerFactory {
 
 exports.default = PlayerFactory;
 
-},{"./global.js":48,"./players/HTML5Player.js":49,"./players/MediaSourcePlayer.js":50,"./players/Player.js":51,"./players/WebAudioPlayer.js":52,"codec-parser":6,"icecast-metadata-js":35}],48:[function(require,module,exports){
+},{"./global.js":49,"./players/HTML5Player.js":50,"./players/MediaSourcePlayer.js":51,"./players/Player.js":52,"./players/WebAudioPlayer.js":53,"codec-parser":7,"icecast-metadata-js":36}],49:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -8254,7 +8289,7 @@ const concatBuffers = buffers => {
 
 exports.concatBuffers = concatBuffers;
 
-},{}],49:[function(require,module,exports){
+},{}],50:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -8332,7 +8367,7 @@ class HTML5Player extends _Player.default {
 
 exports.default = HTML5Player;
 
-},{"../global.js":48,"./Player.js":51}],50:[function(require,module,exports){
+},{"../global.js":49,"./Player.js":52}],51:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -8528,7 +8563,7 @@ class MediaSourcePlayer extends _Player.default {
 
 exports.default = MediaSourcePlayer;
 
-},{"../FrameQueue.js":45,"../global.js":48,"./Player.js":51,"mse-audio-wrapper":59}],51:[function(require,module,exports){
+},{"../FrameQueue.js":46,"../global.js":49,"./Player.js":52,"mse-audio-wrapper":60}],52:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -8687,7 +8722,7 @@ class Player {
 
 exports.default = Player;
 
-},{"../global.js":48}],52:[function(require,module,exports){
+},{"../global.js":49}],53:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -8908,7 +8943,7 @@ class WebAudioPlayer extends _Player.default {
 
 exports.default = WebAudioPlayer;
 
-},{"../FrameQueue.js":45,"../global.js":48,"./Player.js":51,"mpg123-decoder":55,"opus-decoder":68}],53:[function(require,module,exports){
+},{"../FrameQueue.js":46,"../global.js":49,"./Player.js":52,"mpg123-decoder":56,"opus-decoder":69}],54:[function(require,module,exports){
 /*! ieee754. BSD-3-Clause License. Feross Aboukhadijeh <https://feross.org/opensource> */
 exports.read = function (buffer, offset, isLE, mLen, nBytes) {
   var e, m
@@ -8995,7 +9030,7 @@ exports.write = function (buffer, value, offset, isLE, mLen, nBytes) {
   buffer[offset + i - d] |= s * 128
 }
 
-},{}],54:[function(require,module,exports){
+},{}],55:[function(require,module,exports){
 /*!
  * jQuery JavaScript Library v3.6.0
  * https://jquery.com/
@@ -19878,7 +19913,7 @@ if ( typeof noGlobal === "undefined" ) {
 return jQuery;
 } );
 
-},{}],55:[function(require,module,exports){
+},{}],56:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -19903,7 +19938,7 @@ var _MPEGDecoderWebWorker = _interopRequireDefault(require("./src/MPEGDecoderWeb
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-},{"./src/MPEGDecoder.js":57,"./src/MPEGDecoderWebWorker.js":58}],56:[function(require,module,exports){
+},{"./src/MPEGDecoder.js":58,"./src/MPEGDecoderWebWorker.js":59}],57:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -20393,7 +20428,7 @@ K§ZöÌÌ¹PzvR|,Ö\d8by9o Ù¯ÊÜÿNÃÈÊL±âËìV¼X_h
 
 exports.default = EmscriptenWASM;
 
-},{}],57:[function(require,module,exports){
+},{}],58:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -20501,7 +20536,7 @@ class MPEGDecoder {
 
 exports.default = MPEGDecoder;
 
-},{"./EmscriptenWasm.js":56,"@wasm-audio-decoders/common":1}],58:[function(require,module,exports){
+},{"./EmscriptenWasm.js":57,"@wasm-audio-decoders/common":2}],59:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -20538,7 +20573,7 @@ class MPEGDecoderWebWorker extends _common.WASMAudioDecoderWorker {
 
 exports.default = MPEGDecoderWebWorker;
 
-},{"./EmscriptenWasm.js":56,"./MPEGDecoder.js":57,"@wasm-audio-decoders/common":1}],59:[function(require,module,exports){
+},{"./EmscriptenWasm.js":57,"./MPEGDecoder.js":58,"@wasm-audio-decoders/common":2}],60:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -20733,7 +20768,7 @@ class MSEAudioWrapper {
 
 exports.default = MSEAudioWrapper;
 
-},{"./constants.js":60,"./containers/isobmff/ISOBMFFContainer.js":64,"./containers/webm/WEBMContainer.js":66,"codec-parser":6}],60:[function(require,module,exports){
+},{"./constants.js":61,"./containers/isobmff/ISOBMFFContainer.js":65,"./containers/webm/WEBMContainer.js":67,"codec-parser":7}],61:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -20765,7 +20800,7 @@ exports.AUDIO_WEBM = AUDIO_WEBM;
 const MSE_AUDIO_WRAPPER = "mse-audio-wrapper";
 exports.MSE_AUDIO_WRAPPER = MSE_AUDIO_WRAPPER;
 
-},{}],61:[function(require,module,exports){
+},{}],62:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -20944,7 +20979,7 @@ class ContainerElement {
 
 exports.default = ContainerElement;
 
-},{}],62:[function(require,module,exports){
+},{}],63:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -21010,7 +21045,7 @@ class Box extends _ContainerElement.default {
 
 exports.default = Box;
 
-},{"../ContainerElement.js":61}],63:[function(require,module,exports){
+},{"../ContainerElement.js":62}],64:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -21092,7 +21127,7 @@ class ESTag extends _ContainerElement.default {
 
 exports.default = ESTag;
 
-},{"../ContainerElement.js":61}],64:[function(require,module,exports){
+},{"../ContainerElement.js":62}],65:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -21488,7 +21523,7 @@ class ISOBMFFContainer {
 
 exports.default = ISOBMFFContainer;
 
-},{"../../constants.js":60,"../ContainerElement.js":61,"./Box.js":62,"./ESTag.js":63}],65:[function(require,module,exports){
+},{"../../constants.js":61,"../ContainerElement.js":62,"./Box.js":63,"./ESTag.js":64}],66:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -21817,7 +21852,7 @@ const id = {
 };
 exports.id = id;
 
-},{"../../constants.js":60,"../../utilities.js":67,"../ContainerElement.js":61}],66:[function(require,module,exports){
+},{"../../constants.js":61,"../../utilities.js":68,"../ContainerElement.js":62}],67:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -21974,7 +22009,7 @@ class WEBMContainer {
 
 exports.default = WEBMContainer;
 
-},{"../../constants.js":60,"../../utilities.js":67,"../ContainerElement.js":61,"./EBML.js":65}],67:[function(require,module,exports){
+},{"../../constants.js":61,"../../utilities.js":68,"../ContainerElement.js":62,"./EBML.js":66}],68:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -22019,7 +22054,7 @@ const logError = (...messages) => {
 
 exports.logError = logError;
 
-},{"./constants.js":60}],68:[function(require,module,exports){
+},{"./constants.js":61}],69:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -22044,7 +22079,7 @@ var _OpusDecoderWebWorker = _interopRequireDefault(require("./src/OpusDecoderWeb
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-},{"./src/OpusDecoder.js":70,"./src/OpusDecoderWebWorker.js":71}],69:[function(require,module,exports){
+},{"./src/OpusDecoder.js":71,"./src/OpusDecoderWebWorker.js":72}],70:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -22398,7 +22433,7 @@ Yàd|14j40nì m,d0¶U#»m	:Õ,Àû\ÃLIð{'@H é\ÃLIð|U£üm	;U
 
 exports.default = EmscriptenWASM;
 
-},{}],70:[function(require,module,exports){
+},{}],71:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -22514,7 +22549,7 @@ class OpusDecoder {
 
 exports.default = OpusDecoder;
 
-},{"./EmscriptenWasm.js":69,"@wasm-audio-decoders/common":1}],71:[function(require,module,exports){
+},{"./EmscriptenWasm.js":70,"@wasm-audio-decoders/common":2}],72:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -22547,7 +22582,7 @@ class OpusDecoderWebWorker extends _common.WASMAudioDecoderWorker {
 
 exports.default = OpusDecoderWebWorker;
 
-},{"./EmscriptenWasm.js":69,"./OpusDecoder.js":70,"@wasm-audio-decoders/common":1}],72:[function(require,module,exports){
+},{"./EmscriptenWasm.js":70,"./OpusDecoder.js":71,"@wasm-audio-decoders/common":2}],73:[function(require,module,exports){
 /**
  * Copyright 2020 Google LLC
  *
@@ -22564,7 +22599,7 @@ exports.default = OpusDecoderWebWorker;
  * limitations under the License.
  */
 module.exports = Worker;
-},{}],73:[function(require,module,exports){
+},{}],74:[function(require,module,exports){
 (function (global){(function (){
 "use strict";
 
@@ -22592,7 +22627,7 @@ $(function () {
 });
 
 }).call(this)}).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
-},{"icecast-metadata-player":46,"jquery":54}],74:[function(require,module,exports){
+},{"icecast-metadata-player":47,"jquery":55}],75:[function(require,module,exports){
 
 
 // function to set a given theme/color-scheme
@@ -22654,7 +22689,7 @@ function toggleTheme() {
        player.started = 2; 
       }); 
 })();
-},{}],75:[function(require,module,exports){
+},{}],76:[function(require,module,exports){
 /* * 
  * audio visualizer with html5 audio element
  *
@@ -22794,4 +22829,4 @@ $("#play").click(function(){
 
 
 });
-},{}]},{},[73,75,74]);
+},{}]},{},[74,76,1,75]);
