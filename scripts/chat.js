@@ -1,3 +1,4 @@
+import {io}  from "socket.io-client";
 const socket = io('http://subspacefm.xyz/chat')
 const messageContainer = document.getElementById('message-container')
 const messageForm = document.getElementById('send-container')
