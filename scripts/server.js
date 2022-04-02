@@ -1,4 +1,14 @@
-const io = require('socket.io')(3000)
+const { readFileSync } = require("fs");
+const { createServer } = require("https");
+const { Server } = require('socket.io');
+
+const httpServer = createServer({
+  key: readFileSync("/etc/letsencrypt/live/subspacefm.xyz/privkey.pem"),
+  cert: readFileSync("/etc/letsencrypt/live/subspacefm.xyz/fullchain.pem")
+});
+
+
+const io = new Server(httpServer, { /* options */ });
 
 const users = {}
 
@@ -14,4 +24,6 @@ io.on('connection', socket => {
     socket.broadcast.emit('user-disconnected', users[socket.id])
     delete users[socket.id]
   })
-})
+});
+
+httpServer.listen(3000);
