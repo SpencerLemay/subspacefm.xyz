@@ -19,7 +19,7 @@
   "version": "1.0.0",
   "main": "player.js",
   "scripts": {
-    "build": "browserify player.js visualizer.js chat.js themeswitcher.js -o -p esmify > bundle.js",
+    "build": "browserify player.js visualizer.js themeswitcher.js -o -p esmify > bundle.js",
     "watch": "watchify player.js -o -p esmify > bundle.js",
     "devStart": "nodemon server.js"
   },
