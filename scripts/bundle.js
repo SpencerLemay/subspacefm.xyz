@@ -4,6 +4,10 @@ const messageContainer = document.getElementById('message-container')
 const messageForm = document.getElementById('send-container')
 const messageInput = document.getElementById('message-input')
 
+$(window).on('beforeunload', function(){
+    socket.close();
+});
+
 const name = prompt('What is your name?')
 appendMessage('You joined')
 socket.emit('new-user', name)
