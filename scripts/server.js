@@ -3,8 +3,8 @@ const { createServer } = require("https");
 const { Server } = require('socket.io');
 
 const httpServer = createServer({
-  key: readFileSync("/etc/letsencrypt/live/subspacefm.xyz/privkey.pem"),
-  cert: readFileSync("/etc/letsencrypt/live/subspacefm.xyz/fullchain.pem")
+  key: readFileSync("/home/certs/privkey.pem"),
+  cert: readFileSync("/home/certs/fullchain.pem")
 });
 
 
