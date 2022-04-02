@@ -1,16 +1,9 @@
 // Entry Point of the API Server 
   
 const express = require('express');
-const IcecastMetadataStats = require("./IcecastMetadataStats.js");
 
-const statsListener = new IcecastMetadataStats("https://subspacefm.xyz/stream", {
-  onStats: (stats) => { console.log(stats) },
-  interval: 30,
-  sources: ["icy"],
-  ...options
-})
 
-statsListener.start();
+
 
 /* Creates an Express application. 
    The express() function is a top-level 
@@ -53,7 +46,15 @@ pool.connect((err, client, release) => {
         console.log("Connected to Database !")
     })
 })
-  
+ 
+(function getSong() {
+  setTimeout(function () {
+    // execute script
+    getSong()
+  }, 45000); //9000 = 9000ms = 9s
+}());
+
+
 app.get('/history', (req, res, next) => {
     console.log("TEST DATA :");
     pool.query('Select * from test')
