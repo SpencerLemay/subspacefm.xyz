@@ -1,0 +1,5 @@
+{
+  "dependencies": {
+    "icecast-metadata-stats": "^0.1.2"
+  }
+}

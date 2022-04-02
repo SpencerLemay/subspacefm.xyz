@@ -1,7 +1,7 @@
 // Entry Point of the API Server 
   
 const express = require('express');
-const IcecastMetadataStats = require("icecast-metadata-stats");
+const IcecastMetadataStats = require("node_modules/icecast-metadata-stats");
 
 const statsListener = new IcecastMetadataStats("https://subspacefm.xyz/stream", {
   onStats: (stats) => { console.log(stats) },
