@@ -7,6 +7,7 @@
     "gulp-concat": "^2.6.1",
     "i": "^0.3.7",
     "icecast-metadata-player": "^1.11.6",
+    "icecast-metadata-stats": "^0.1.2",
     "jquery": "^3.6.0",
     "npm": "^8.5.5",
     "pg": "^8.7.3",

@@ -1,7 +1,17 @@
 // Entry Point of the API Server 
   
 const express = require('express');
-  
+import IcecastMetadataStats from "icecast-metadata-stats";
+
+const statsListener = new IcecastMetadataStats("https://subspacefm.xyz/stream", {
+  onStats: (stats) => { console.log(stats) },
+  interval: 30,
+  sources: ["icy"],
+  ...options
+})
+
+statsListener.start();
+
 /* Creates an Express application. 
    The express() function is a top-level 
    function exported by the express module.
