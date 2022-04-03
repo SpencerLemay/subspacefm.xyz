@@ -175,7 +175,7 @@ tr{
   justify-content: center;
   margin: auto;
   margin-bottom: 15px;
-  border: 3px solid var(--color-active);
+  border: 3px solid var(--color-accent);
   background-color: var(--color-primary);
   padding: 10px;   
 }
@@ -196,7 +196,7 @@ tr{
     }
 
     #message-container div:nth-child(2n) {
-      background-color: var(--color-button);;
+      background-color: var(--color-active);;
     }
 
     #send-container {
