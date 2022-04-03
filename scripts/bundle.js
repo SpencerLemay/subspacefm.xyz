@@ -30,7 +30,7 @@ socket.on('user-connected', data => {
 })
 
 socket.on('error-message', data => {
-  appendMessage(`${data.name} connected`)
+  appendMessage(`${data.message}`)
 })
 
 socket.on('user-name-change', data => {
