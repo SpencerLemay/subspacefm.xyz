@@ -9,7 +9,7 @@ const messageInput = document.getElementById('message-input')
 
 const name = prompt('What is your name?')
 appendMessage('You joined')
-socket.emit('new-user', 'chad')//name)
+socket.emit('new-user', name)
 
 socket.on('chat-message', data => {
   appendMessage(`${data.name}: ${data.message}`)
