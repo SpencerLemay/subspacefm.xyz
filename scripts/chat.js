@@ -49,7 +49,7 @@ messageForm.addEventListener('submit', e => {
          var str = messageInput.value;
          var i = str.search(' ')
          var cmd = str.substring(1, i)
-         argument = str.substring(i,str.length);
+         var argument = str.substring(i,str.length);
          outgoing = {
             sessionid:sessionid,
             cmd: cmd,
