@@ -53,9 +53,9 @@ io.on('connection', socket => {
 
 
     users.push(user);
-    console.log("NEW USER CONNECTED: " + name);
-    socket.emit('getSession',{name:name, sessionid:sessionid});
-    socket.broadcast.emit('user-connected',{name:name});
+    console.log("NEW USER CONNECTED: " + user.name);
+    socket.emit('getSession',{name:user.name, sessionid:user.sessionid});
+    socket.broadcast.emit('user-connected',{name:user.name});
   })
 
 
