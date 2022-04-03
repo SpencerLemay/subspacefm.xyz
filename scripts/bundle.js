@@ -54,7 +54,7 @@ messageForm.addEventListener('submit', e => {
          outgoing = {
             sessionid:sessionid,
             cmd: cmd,
-            argument: argument
+            args: argument
             }
 
        socket.emit('command', outgoing);
