@@ -68,6 +68,7 @@ socket.on('command', incoming => {
     var user = users.find( ({ sessionid }) => sessionid === incoming.sessionid );
     if (user == undefined){
        socket.emit('error-message', { message: 'ERROR: Invalid or expired sessionid, refresh to chat.'});
+       return;
     }
     console.log("COMMAND ISSUED " + incoming.cmd +'.');
    if (incoming.cmd === 'changename'){
