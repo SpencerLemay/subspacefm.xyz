@@ -72,7 +72,7 @@ socket.on('command', incoming => {
     console.log("COMMAND ISSUED " + incoming.cmd +'.');
    if (incoming.cmd === 'changename'){
        var oldname = user.name;
-    
+        console.log("test1 ");
          // see if user is currently logged in
          if  (incoming.args != undefined){
                var user2 = users.find( ({ name }) => name === incoming.args );
