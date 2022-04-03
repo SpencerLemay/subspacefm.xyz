@@ -170,7 +170,7 @@ tr{
 }
 
 .chatbox{
-  width:  400px;
+  width:  570px;
   display: grid;
   justify-content: center;
   margin: auto;
@@ -186,8 +186,8 @@ tr{
 }
 
     #message-container {
-      width: 80%;
-      max-width: 1200px;
+      width: 560px;
+      max-width: 560px;
     }
 
     #message-container div {
