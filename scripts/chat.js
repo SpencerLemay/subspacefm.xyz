@@ -10,8 +10,6 @@ const messageInput = document.getElementById('message-input')
 socket.emit('newUser'); 
 
 var sessionid;
-var name = 'default';
-appendMessage('Enter Name')
 
 socket.on('getSession', data => {
   sessionid = data.sessionid;
@@ -26,8 +24,16 @@ socket.on('chat-message', data => {
   appendMessage(`${data.name}: ${data.message}`)
 })
 
-socket.on('user-connected', name => {
-  appendMessage(`${name} connected`)
+socket.on('user-connected', data => {
+  appendMessage(`${data.name} connected`)
+})
+
+socket.on('error-message', data => {
+  appendMessage(`${data.name} connected`)
+})
+
+socket.on('user-name-change', data => {
+  appendMessage(`${data.oldname} changed name to ${data.name}.`)
 })
 
 socket.on('user-disconnected', name => {
@@ -36,6 +42,25 @@ socket.on('user-disconnected', name => {
 
 messageForm.addEventListener('submit', e => {
   e.preventDefault()
+
+   //Commands
+   if   (messageInput.value[0] == '!')
+         {
+         var str = messageInput.value[0];
+         var i = str.search(' ')
+         var cmd = str.substring(1, i)
+         argument = str.substring(i,str.length);
+         outgoing = {
+            sessionid:sessionid,
+            cmd: cmd,
+            argument: argument
+            }
+
+       socket.emit('command', outgoing);
+
+      return;
+       }
+
   var outgoing = {
       sessionid: sessionid,
       message: messageInput.value
