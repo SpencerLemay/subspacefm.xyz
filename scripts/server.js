@@ -11,12 +11,12 @@ const users = {}
 io.on('connection', socket => {
   socket.on('new-user', name => {
     users[socket.id] = name
+     console.log("USER CONNECTED: " + name)
     socket.broadcast.emit('user-connected', name)
-    console.log("USER CONNECTED: " + name)
   })
   socket.on('send-chat-message', message => {
+	 console.log("USER SAID: " + message)
     socket.broadcast.emit('chat-message', { message: message, name: users[socket.id] })
-    console.log("USER SAID: " + message)
 
   })
   socket.on('disconnect', () => {
