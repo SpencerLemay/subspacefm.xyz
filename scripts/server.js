@@ -32,7 +32,7 @@ io.on('connection', socket => {
   //isBanned(socket);
 
    var sessionid = getSessionid();
-   var username = getUserName();
+   var name = getUserName();
     var user = {
       name: name,
       sessionid: sessionid,
