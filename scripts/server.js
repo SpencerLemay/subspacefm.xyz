@@ -1,4 +1,11 @@
-const io = require('socket.io')(3000)
+const io = require('socket.io')(3000)(httpServer, {
+  cors: {
+    origin: "http://localhost:3000",
+    methods: ["GET", "POST"],
+    allowedHeaders: ["my-custom-header"],
+    credentials: true
+  }
+});
 
 const users = {}
 
