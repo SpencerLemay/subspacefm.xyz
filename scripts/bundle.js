@@ -40,6 +40,9 @@ socket.on('user-name-change', data => {
 socket.on('user-disconnected', name => {
   appendMessage(`${name} disconnected`)
 })
+socket.on('help', name => {
+  appendMessage(`${name} disconnected`)
+})
 
 messageForm.addEventListener('submit', e => {
   e.preventDefault()

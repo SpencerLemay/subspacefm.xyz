@@ -97,7 +97,16 @@ socket.on('command', incoming => {
         console.log('User ' + oldname +  'changed name to ' + incoming.args);
         socket.emit('user-name-change', {oldname:oldname, name:incoming.args});
         socket.broadcast.emit('user-name-change',{oldname:oldname, name:incoming.args});
-  }
+        return
+       }
+   if (incoming.cmd === 'help')
+       {
+        socket.emit('help',message:"Available commands: !changename <name>.")
+        return
+       }
+
+    
+
 })
 
 
