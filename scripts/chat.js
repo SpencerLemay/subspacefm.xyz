@@ -49,7 +49,7 @@ messageForm.addEventListener('submit', e => {
          var str = messageInput.value;
          var i = str.search(' ')
          var cmd = str.substring(1, i)
-         var argument = str.substring(i,str.length);
+         var argument = str.substring(i + 1,str.length);
          outgoing = {
             sessionid:sessionid,
             cmd: cmd,
@@ -57,6 +57,7 @@ messageForm.addEventListener('submit', e => {
             }
 
        socket.emit('command', outgoing);
+       messageInput.value = ''
 
       return;
        }

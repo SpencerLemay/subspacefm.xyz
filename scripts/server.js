@@ -80,7 +80,7 @@ socket.on('command', incoming => {
     
                if (user2 != undefined){//ERROR
                      var address = socket.handshake.address;
-                     console.log('New connection from ' + address.address +  ' tried using name ' + incoming.args);
+                     console.log('Connection from ' + address.address +  ' tried using name ' + incoming.args);
                      socket.emit('error-message', { message: 'ERROR: User name already taken'});
                      return;
                   }
@@ -93,6 +93,7 @@ socket.on('command', incoming => {
        var i = users.findIndex(user);
         users[i].name = incoming.args;
         console.log('User ' + oldname +  'changed name to ' + incoming.args);
+        socket.emit('user-name-change', {oldname:oldname, name:incoming.args});
         socket.broadcast.emit('user-name-change',{oldname:oldname, name:incoming.args});
   }
 })
