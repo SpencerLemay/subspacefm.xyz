@@ -1,7 +1,7 @@
 const io = require("socket.io")(3000);
 const crypto = require('crypto');
 const users = [];
-
+var messages = [];
 /*function timeout(){
 
 }*/
@@ -55,6 +55,10 @@ io.on('connection', socket => {
     users.push(user);
     console.log("NEW USER CONNECTED: " + user.name);
     socket.emit('getSession',{name:user.name, sessionid:user.sessionid});
+    messages.forEach(element => {
+          socket.emit('chat-message', { message: element.message, name: element.name });
+          });
+
     socket.broadcast.emit('user-connected',{name:user.name});
   })
 
@@ -121,6 +125,11 @@ socket.on('command', incoming => {
 
 	 console.log(user.name + " SAID: " + incoming.message);
     socket.broadcast.emit('chat-message', { message: incoming.message, name: user.name });
+    messages.push({message: incoming.message, name: user.name})
+
+    if (messages.length > 50){
+      messages.shift();
+    }
 
   })
   socket.on('disconnect', incoming => {

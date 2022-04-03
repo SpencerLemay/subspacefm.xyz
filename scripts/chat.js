@@ -1,12 +1,9 @@
-var cors = require('cors');
 const socket = io.connect('https://subspacefm.xyz', {resource: '/chat'});
 
 
 const messageContainer = document.getElementById('message-container')
 const messageForm = document.getElementById('send-container')
 const messageInput = document.getElementById('message-input')
-
-//const name = prompt('What is your name?')
 socket.emit('newUser'); 
 
 var sessionid;
@@ -71,6 +68,7 @@ messageForm.addEventListener('submit', e => {
   }
 
   appendMessage(`You: ${outgoing.message}`)
+
   socket.emit('send-chat-message', outgoing)
   messageInput.value = ''
 })

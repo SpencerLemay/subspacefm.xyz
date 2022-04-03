@@ -1,13 +1,10 @@
 (function(){function r(e,n,t){function o(i,f){if(!n[i]){if(!e[i]){var c="function"==typeof require&&require;if(!f&&c)return c(i,!0);if(u)return u(i,!0);var a=new Error("Cannot find module '"+i+"'");throw a.code="MODULE_NOT_FOUND",a}var p=n[i]={exports:{}};e[i][0].call(p.exports,function(r){var n=e[i][1][r];return o(n||r)},p,p.exports,r,e,n,t)}return n[i].exports}for(var u="function"==typeof require&&require,i=0;i<t.length;i++)o(t[i]);return o}return r})()({1:[function(require,module,exports){
-var cors = require('cors');
 const socket = io.connect('https://subspacefm.xyz', {resource: '/chat'});
 
 
 const messageContainer = document.getElementById('message-container')
 const messageForm = document.getElementById('send-container')
 const messageInput = document.getElementById('message-input')
-
-//const name = prompt('What is your name?')
 socket.emit('newUser'); 
 
 var sessionid;
@@ -72,6 +69,7 @@ messageForm.addEventListener('submit', e => {
   }
 
   appendMessage(`You: ${outgoing.message}`)
+
   socket.emit('send-chat-message', outgoing)
   messageInput.value = ''
 })
@@ -81,7 +79,7 @@ function appendMessage(message) {
   messageElement.innerText = message
   messageContainer.append(messageElement)
 }
-},{"cors":36}],2:[function(require,module,exports){
+},{}],2:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -786,7 +784,7 @@ class WASMAudioDecoderWorker extends _webWorker.default {
 exports.default = WASMAudioDecoderWorker;
 
 }).call(this)}).call(this,require("buffer").Buffer)
-},{"./WASMAudioDecoderCommon.js":3,"buffer":6,"web-worker":76}],5:[function(require,module,exports){
+},{"./WASMAudioDecoderCommon.js":3,"buffer":6,"web-worker":73}],5:[function(require,module,exports){
 'use strict'
 
 exports.byteLength = byteLength
@@ -2719,7 +2717,7 @@ function numberIsNaN (obj) {
 }
 
 }).call(this)}).call(this,require("buffer").Buffer)
-},{"base64-js":5,"buffer":6,"ieee754":55}],7:[function(require,module,exports){
+},{"base64-js":5,"buffer":6,"ieee754":54}],7:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -6281,246 +6279,6 @@ class BitReader {
 exports.BitReader = BitReader;
 
 },{}],36:[function(require,module,exports){
-(function () {
-
-  'use strict';
-
-  var assign = require('object-assign');
-  var vary = require('vary');
-
-  var defaults = {
-    origin: '*',
-    methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
-    preflightContinue: false,
-    optionsSuccessStatus: 204
-  };
-
-  function isString(s) {
-    return typeof s === 'string' || s instanceof String;
-  }
-
-  function isOriginAllowed(origin, allowedOrigin) {
-    if (Array.isArray(allowedOrigin)) {
-      for (var i = 0; i < allowedOrigin.length; ++i) {
-        if (isOriginAllowed(origin, allowedOrigin[i])) {
-          return true;
-        }
-      }
-      return false;
-    } else if (isString(allowedOrigin)) {
-      return origin === allowedOrigin;
-    } else if (allowedOrigin instanceof RegExp) {
-      return allowedOrigin.test(origin);
-    } else {
-      return !!allowedOrigin;
-    }
-  }
-
-  function configureOrigin(options, req) {
-    var requestOrigin = req.headers.origin,
-      headers = [],
-      isAllowed;
-
-    if (!options.origin || options.origin === '*') {
-      // allow any origin
-      headers.push([{
-        key: 'Access-Control-Allow-Origin',
-        value: '*'
-      }]);
-    } else if (isString(options.origin)) {
-      // fixed origin
-      headers.push([{
-        key: 'Access-Control-Allow-Origin',
-        value: options.origin
-      }]);
-      headers.push([{
-        key: 'Vary',
-        value: 'Origin'
-      }]);
-    } else {
-      isAllowed = isOriginAllowed(requestOrigin, options.origin);
-      // reflect origin
-      headers.push([{
-        key: 'Access-Control-Allow-Origin',
-        value: isAllowed ? requestOrigin : false
-      }]);
-      headers.push([{
-        key: 'Vary',
-        value: 'Origin'
-      }]);
-    }
-
-    return headers;
-  }
-
-  function configureMethods(options) {
-    var methods = options.methods;
-    if (methods.join) {
-      methods = options.methods.join(','); // .methods is an array, so turn it into a string
-    }
-    return {
-      key: 'Access-Control-Allow-Methods',
-      value: methods
-    };
-  }
-
-  function configureCredentials(options) {
-    if (options.credentials === true) {
-      return {
-        key: 'Access-Control-Allow-Credentials',
-        value: 'true'
-      };
-    }
-    return null;
-  }
-
-  function configureAllowedHeaders(options, req) {
-    var allowedHeaders = options.allowedHeaders || options.headers;
-    var headers = [];
-
-    if (!allowedHeaders) {
-      allowedHeaders = req.headers['access-control-request-headers']; // .headers wasn't specified, so reflect the request headers
-      headers.push([{
-        key: 'Vary',
-        value: 'Access-Control-Request-Headers'
-      }]);
-    } else if (allowedHeaders.join) {
-      allowedHeaders = allowedHeaders.join(','); // .headers is an array, so turn it into a string
-    }
-    if (allowedHeaders && allowedHeaders.length) {
-      headers.push([{
-        key: 'Access-Control-Allow-Headers',
-        value: allowedHeaders
-      }]);
-    }
-
-    return headers;
-  }
-
-  function configureExposedHeaders(options) {
-    var headers = options.exposedHeaders;
-    if (!headers) {
-      return null;
-    } else if (headers.join) {
-      headers = headers.join(','); // .headers is an array, so turn it into a string
-    }
-    if (headers && headers.length) {
-      return {
-        key: 'Access-Control-Expose-Headers',
-        value: headers
-      };
-    }
-    return null;
-  }
-
-  function configureMaxAge(options) {
-    var maxAge = (typeof options.maxAge === 'number' || options.maxAge) && options.maxAge.toString()
-    if (maxAge && maxAge.length) {
-      return {
-        key: 'Access-Control-Max-Age',
-        value: maxAge
-      };
-    }
-    return null;
-  }
-
-  function applyHeaders(headers, res) {
-    for (var i = 0, n = headers.length; i < n; i++) {
-      var header = headers[i];
-      if (header) {
-        if (Array.isArray(header)) {
-          applyHeaders(header, res);
-        } else if (header.key === 'Vary' && header.value) {
-          vary(res, header.value);
-        } else if (header.value) {
-          res.setHeader(header.key, header.value);
-        }
-      }
-    }
-  }
-
-  function cors(options, req, res, next) {
-    var headers = [],
-      method = req.method && req.method.toUpperCase && req.method.toUpperCase();
-
-    if (method === 'OPTIONS') {
-      // preflight
-      headers.push(configureOrigin(options, req));
-      headers.push(configureCredentials(options, req));
-      headers.push(configureMethods(options, req));
-      headers.push(configureAllowedHeaders(options, req));
-      headers.push(configureMaxAge(options, req));
-      headers.push(configureExposedHeaders(options, req));
-      applyHeaders(headers, res);
-
-      if (options.preflightContinue) {
-        next();
-      } else {
-        // Safari (and potentially other browsers) need content-length 0,
-        //   for 204 or they just hang waiting for a body
-        res.statusCode = options.optionsSuccessStatus;
-        res.setHeader('Content-Length', '0');
-        res.end();
-      }
-    } else {
-      // actual response
-      headers.push(configureOrigin(options, req));
-      headers.push(configureCredentials(options, req));
-      headers.push(configureExposedHeaders(options, req));
-      applyHeaders(headers, res);
-      next();
-    }
-  }
-
-  function middlewareWrapper(o) {
-    // if options are static (either via defaults or custom options passed in), wrap in a function
-    var optionsCallback = null;
-    if (typeof o === 'function') {
-      optionsCallback = o;
-    } else {
-      optionsCallback = function (req, cb) {
-        cb(null, o);
-      };
-    }
-
-    return function corsMiddleware(req, res, next) {
-      optionsCallback(req, function (err, options) {
-        if (err) {
-          next(err);
-        } else {
-          var corsOptions = assign({}, defaults, options);
-          var originCallback = null;
-          if (corsOptions.origin && typeof corsOptions.origin === 'function') {
-            originCallback = corsOptions.origin;
-          } else if (corsOptions.origin) {
-            originCallback = function (origin, cb) {
-              cb(null, corsOptions.origin);
-            };
-          }
-
-          if (originCallback) {
-            originCallback(req.headers.origin, function (err2, origin) {
-              if (err2 || !origin) {
-                next(err2);
-              } else {
-                corsOptions.origin = origin;
-                cors(corsOptions, req, res, next);
-              }
-            });
-          } else {
-            next();
-          }
-        }
-      });
-    };
-  }
-
-  // can pass either an options hash, an options delegate, or nothing
-  module.exports = middlewareWrapper;
-
-}());
-
-},{"object-assign":70,"vary":75}],37:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -6553,7 +6311,7 @@ var _IcecastReadableStream = _interopRequireDefault(require("./src/IcecastReadab
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-},{"./src/IcecastMetadataQueue.js":38,"./src/IcecastMetadataReader.js":39,"./src/IcecastReadableStream.js":40}],38:[function(require,module,exports){
+},{"./src/IcecastMetadataQueue.js":37,"./src/IcecastMetadataReader.js":38,"./src/IcecastReadableStream.js":39}],37:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -6702,7 +6460,7 @@ class IcecastMetadataQueue {
 
 exports.default = IcecastMetadataQueue;
 
-},{}],39:[function(require,module,exports){
+},{}],38:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -6835,7 +6593,7 @@ class IcecastMetadataReader {
 
 exports.default = IcecastMetadataReader;
 
-},{"./MetadataParser/DualMetadataParser.js":41,"./MetadataParser/IcyMetadataParser.js":42,"./MetadataParser/MetadataParser.js":43,"./MetadataParser/OggMetadataParser.js":44}],40:[function(require,module,exports){
+},{"./MetadataParser/DualMetadataParser.js":40,"./MetadataParser/IcyMetadataParser.js":41,"./MetadataParser/MetadataParser.js":42,"./MetadataParser/OggMetadataParser.js":43}],39:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -6949,7 +6707,7 @@ class IcecastReadableStream {
 
 exports.default = IcecastReadableStream;
 
-},{"./IcecastMetadataReader.js":39}],41:[function(require,module,exports){
+},{"./IcecastMetadataReader.js":38}],40:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -7041,7 +6799,7 @@ class DualMetadataParser {
 
 exports.default = DualMetadataParser;
 
-},{"./IcyMetadataParser.js":42,"./OggMetadataParser.js":44}],42:[function(require,module,exports){
+},{"./IcyMetadataParser.js":41,"./OggMetadataParser.js":43}],41:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -7198,7 +6956,7 @@ class IcyMetadataParser extends _MetadataParser.default {
 
 exports.default = IcyMetadataParser;
 
-},{"./MetadataParser.js":43}],43:[function(require,module,exports){
+},{"./MetadataParser.js":42}],42:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -7381,7 +7139,7 @@ class MetadataParser {
 
 exports.default = MetadataParser;
 
-},{"./Stats.js":45}],44:[function(require,module,exports){
+},{"./Stats.js":44}],43:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -7605,7 +7363,7 @@ class OggMetadataParser extends _MetadataParser.default {
 
 exports.default = OggMetadataParser;
 
-},{"./MetadataParser.js":43}],45:[function(require,module,exports){
+},{"./MetadataParser.js":42}],44:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -7687,7 +7445,7 @@ class Stats {
 
 exports.default = Stats;
 
-},{}],46:[function(require,module,exports){
+},{}],45:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -7751,7 +7509,7 @@ class EventTargetPolyfill {
 
 exports.default = EventTargetPolyfill;
 
-},{}],47:[function(require,module,exports){
+},{}],46:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -7876,7 +7634,7 @@ class FrameQueue {
 
 exports.default = FrameQueue;
 
-},{"./global.js":50}],48:[function(require,module,exports){
+},{"./global.js":49}],47:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -8310,7 +8068,7 @@ class IcecastMetadataPlayer extends EventClass {
 
 exports.default = IcecastMetadataPlayer;
 
-},{"./EventTargetPolyfill.js":46,"./PlayerFactory.js":49,"./global.js":50,"./players/HTML5Player.js":51,"./players/MediaSourcePlayer.js":52,"./players/WebAudioPlayer.js":54,"icecast-metadata-js":37}],49:[function(require,module,exports){
+},{"./EventTargetPolyfill.js":45,"./PlayerFactory.js":48,"./global.js":49,"./players/HTML5Player.js":50,"./players/MediaSourcePlayer.js":51,"./players/WebAudioPlayer.js":53,"icecast-metadata-js":36}],48:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -8475,7 +8233,7 @@ class PlayerFactory {
 
 exports.default = PlayerFactory;
 
-},{"./global.js":50,"./players/HTML5Player.js":51,"./players/MediaSourcePlayer.js":52,"./players/Player.js":53,"./players/WebAudioPlayer.js":54,"codec-parser":7,"icecast-metadata-js":37}],50:[function(require,module,exports){
+},{"./global.js":49,"./players/HTML5Player.js":50,"./players/MediaSourcePlayer.js":51,"./players/Player.js":52,"./players/WebAudioPlayer.js":53,"codec-parser":7,"icecast-metadata-js":36}],49:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -8577,7 +8335,7 @@ const concatBuffers = buffers => {
 
 exports.concatBuffers = concatBuffers;
 
-},{}],51:[function(require,module,exports){
+},{}],50:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -8655,7 +8413,7 @@ class HTML5Player extends _Player.default {
 
 exports.default = HTML5Player;
 
-},{"../global.js":50,"./Player.js":53}],52:[function(require,module,exports){
+},{"../global.js":49,"./Player.js":52}],51:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -8851,7 +8609,7 @@ class MediaSourcePlayer extends _Player.default {
 
 exports.default = MediaSourcePlayer;
 
-},{"../FrameQueue.js":47,"../global.js":50,"./Player.js":53,"mse-audio-wrapper":61}],53:[function(require,module,exports){
+},{"../FrameQueue.js":46,"../global.js":49,"./Player.js":52,"mse-audio-wrapper":60}],52:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -9010,7 +8768,7 @@ class Player {
 
 exports.default = Player;
 
-},{"../global.js":50}],54:[function(require,module,exports){
+},{"../global.js":49}],53:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -9231,7 +8989,7 @@ class WebAudioPlayer extends _Player.default {
 
 exports.default = WebAudioPlayer;
 
-},{"../FrameQueue.js":47,"../global.js":50,"./Player.js":53,"mpg123-decoder":57,"opus-decoder":71}],55:[function(require,module,exports){
+},{"../FrameQueue.js":46,"../global.js":49,"./Player.js":52,"mpg123-decoder":56,"opus-decoder":69}],54:[function(require,module,exports){
 /*! ieee754. BSD-3-Clause License. Feross Aboukhadijeh <https://feross.org/opensource> */
 exports.read = function (buffer, offset, isLE, mLen, nBytes) {
   var e, m
@@ -9318,7 +9076,7 @@ exports.write = function (buffer, value, offset, isLE, mLen, nBytes) {
   buffer[offset + i - d] |= s * 128
 }
 
-},{}],56:[function(require,module,exports){
+},{}],55:[function(require,module,exports){
 /*!
  * jQuery JavaScript Library v3.6.0
  * https://jquery.com/
@@ -20201,7 +19959,7 @@ if ( typeof noGlobal === "undefined" ) {
 return jQuery;
 } );
 
-},{}],57:[function(require,module,exports){
+},{}],56:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -20226,7 +19984,7 @@ var _MPEGDecoderWebWorker = _interopRequireDefault(require("./src/MPEGDecoderWeb
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-},{"./src/MPEGDecoder.js":59,"./src/MPEGDecoderWebWorker.js":60}],58:[function(require,module,exports){
+},{"./src/MPEGDecoder.js":58,"./src/MPEGDecoderWebWorker.js":59}],57:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -20716,7 +20474,7 @@ K§ZöÌÌ¹PzvR|,Ö\d8by9o Ù¯ÊÜÿNÃÈÊL±âËìV¼X_h
 
 exports.default = EmscriptenWASM;
 
-},{}],59:[function(require,module,exports){
+},{}],58:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -20824,7 +20582,7 @@ class MPEGDecoder {
 
 exports.default = MPEGDecoder;
 
-},{"./EmscriptenWasm.js":58,"@wasm-audio-decoders/common":2}],60:[function(require,module,exports){
+},{"./EmscriptenWasm.js":57,"@wasm-audio-decoders/common":2}],59:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -20861,7 +20619,7 @@ class MPEGDecoderWebWorker extends _common.WASMAudioDecoderWorker {
 
 exports.default = MPEGDecoderWebWorker;
 
-},{"./EmscriptenWasm.js":58,"./MPEGDecoder.js":59,"@wasm-audio-decoders/common":2}],61:[function(require,module,exports){
+},{"./EmscriptenWasm.js":57,"./MPEGDecoder.js":58,"@wasm-audio-decoders/common":2}],60:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -21056,7 +20814,7 @@ class MSEAudioWrapper {
 
 exports.default = MSEAudioWrapper;
 
-},{"./constants.js":62,"./containers/isobmff/ISOBMFFContainer.js":66,"./containers/webm/WEBMContainer.js":68,"codec-parser":7}],62:[function(require,module,exports){
+},{"./constants.js":61,"./containers/isobmff/ISOBMFFContainer.js":65,"./containers/webm/WEBMContainer.js":67,"codec-parser":7}],61:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -21088,7 +20846,7 @@ exports.AUDIO_WEBM = AUDIO_WEBM;
 const MSE_AUDIO_WRAPPER = "mse-audio-wrapper";
 exports.MSE_AUDIO_WRAPPER = MSE_AUDIO_WRAPPER;
 
-},{}],63:[function(require,module,exports){
+},{}],62:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -21267,7 +21025,7 @@ class ContainerElement {
 
 exports.default = ContainerElement;
 
-},{}],64:[function(require,module,exports){
+},{}],63:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -21333,7 +21091,7 @@ class Box extends _ContainerElement.default {
 
 exports.default = Box;
 
-},{"../ContainerElement.js":63}],65:[function(require,module,exports){
+},{"../ContainerElement.js":62}],64:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -21415,7 +21173,7 @@ class ESTag extends _ContainerElement.default {
 
 exports.default = ESTag;
 
-},{"../ContainerElement.js":63}],66:[function(require,module,exports){
+},{"../ContainerElement.js":62}],65:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -21811,7 +21569,7 @@ class ISOBMFFContainer {
 
 exports.default = ISOBMFFContainer;
 
-},{"../../constants.js":62,"../ContainerElement.js":63,"./Box.js":64,"./ESTag.js":65}],67:[function(require,module,exports){
+},{"../../constants.js":61,"../ContainerElement.js":62,"./Box.js":63,"./ESTag.js":64}],66:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -22140,7 +21898,7 @@ const id = {
 };
 exports.id = id;
 
-},{"../../constants.js":62,"../../utilities.js":69,"../ContainerElement.js":63}],68:[function(require,module,exports){
+},{"../../constants.js":61,"../../utilities.js":68,"../ContainerElement.js":62}],67:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -22297,7 +22055,7 @@ class WEBMContainer {
 
 exports.default = WEBMContainer;
 
-},{"../../constants.js":62,"../../utilities.js":69,"../ContainerElement.js":63,"./EBML.js":67}],69:[function(require,module,exports){
+},{"../../constants.js":61,"../../utilities.js":68,"../ContainerElement.js":62,"./EBML.js":66}],68:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -22342,99 +22100,7 @@ const logError = (...messages) => {
 
 exports.logError = logError;
 
-},{"./constants.js":62}],70:[function(require,module,exports){
-/*
-object-assign
-(c) Sindre Sorhus
-@license MIT
-*/
-
-'use strict';
-/* eslint-disable no-unused-vars */
-var getOwnPropertySymbols = Object.getOwnPropertySymbols;
-var hasOwnProperty = Object.prototype.hasOwnProperty;
-var propIsEnumerable = Object.prototype.propertyIsEnumerable;
-
-function toObject(val) {
-	if (val === null || val === undefined) {
-		throw new TypeError('Object.assign cannot be called with null or undefined');
-	}
-
-	return Object(val);
-}
-
-function shouldUseNative() {
-	try {
-		if (!Object.assign) {
-			return false;
-		}
-
-		// Detect buggy property enumeration order in older V8 versions.
-
-		// https://bugs.chromium.org/p/v8/issues/detail?id=4118
-		var test1 = new String('abc');  // eslint-disable-line no-new-wrappers
-		test1[5] = 'de';
-		if (Object.getOwnPropertyNames(test1)[0] === '5') {
-			return false;
-		}
-
-		// https://bugs.chromium.org/p/v8/issues/detail?id=3056
-		var test2 = {};
-		for (var i = 0; i < 10; i++) {
-			test2['_' + String.fromCharCode(i)] = i;
-		}
-		var order2 = Object.getOwnPropertyNames(test2).map(function (n) {
-			return test2[n];
-		});
-		if (order2.join('') !== '0123456789') {
-			return false;
-		}
-
-		// https://bugs.chromium.org/p/v8/issues/detail?id=3056
-		var test3 = {};
-		'abcdefghijklmnopqrst'.split('').forEach(function (letter) {
-			test3[letter] = letter;
-		});
-		if (Object.keys(Object.assign({}, test3)).join('') !==
-				'abcdefghijklmnopqrst') {
-			return false;
-		}
-
-		return true;
-	} catch (err) {
-		// We don't expect any of the above to throw, but better to be safe.
-		return false;
-	}
-}
-
-module.exports = shouldUseNative() ? Object.assign : function (target, source) {
-	var from;
-	var to = toObject(target);
-	var symbols;
-
-	for (var s = 1; s < arguments.length; s++) {
-		from = Object(arguments[s]);
-
-		for (var key in from) {
-			if (hasOwnProperty.call(from, key)) {
-				to[key] = from[key];
-			}
-		}
-
-		if (getOwnPropertySymbols) {
-			symbols = getOwnPropertySymbols(from);
-			for (var i = 0; i < symbols.length; i++) {
-				if (propIsEnumerable.call(from, symbols[i])) {
-					to[symbols[i]] = from[symbols[i]];
-				}
-			}
-		}
-	}
-
-	return to;
-};
-
-},{}],71:[function(require,module,exports){
+},{"./constants.js":61}],69:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -22459,7 +22125,7 @@ var _OpusDecoderWebWorker = _interopRequireDefault(require("./src/OpusDecoderWeb
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-},{"./src/OpusDecoder.js":73,"./src/OpusDecoderWebWorker.js":74}],72:[function(require,module,exports){
+},{"./src/OpusDecoder.js":71,"./src/OpusDecoderWebWorker.js":72}],70:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -22813,7 +22479,7 @@ Yàd|14j40nì m,d0¶U#»m	:Õ,Àû\ÃLIð{'@H é\ÃLIð|U£üm	;U
 
 exports.default = EmscriptenWASM;
 
-},{}],73:[function(require,module,exports){
+},{}],71:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -22929,7 +22595,7 @@ class OpusDecoder {
 
 exports.default = OpusDecoder;
 
-},{"./EmscriptenWasm.js":72,"@wasm-audio-decoders/common":2}],74:[function(require,module,exports){
+},{"./EmscriptenWasm.js":70,"@wasm-audio-decoders/common":2}],72:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -22962,158 +22628,7 @@ class OpusDecoderWebWorker extends _common.WASMAudioDecoderWorker {
 
 exports.default = OpusDecoderWebWorker;
 
-},{"./EmscriptenWasm.js":72,"./OpusDecoder.js":73,"@wasm-audio-decoders/common":2}],75:[function(require,module,exports){
-/*!
- * vary
- * Copyright(c) 2014-2017 Douglas Christopher Wilson
- * MIT Licensed
- */
-
-'use strict'
-
-/**
- * Module exports.
- */
-
-module.exports = vary
-module.exports.append = append
-
-/**
- * RegExp to match field-name in RFC 7230 sec 3.2
- *
- * field-name    = token
- * token         = 1*tchar
- * tchar         = "!" / "#" / "$" / "%" / "&" / "'" / "*"
- *               / "+" / "-" / "." / "^" / "_" / "`" / "|" / "~"
- *               / DIGIT / ALPHA
- *               ; any VCHAR, except delimiters
- */
-
-var FIELD_NAME_REGEXP = /^[!#$%&'*+\-.^_`|~0-9A-Za-z]+$/
-
-/**
- * Append a field to a vary header.
- *
- * @param {String} header
- * @param {String|Array} field
- * @return {String}
- * @public
- */
-
-function append (header, field) {
-  if (typeof header !== 'string') {
-    throw new TypeError('header argument is required')
-  }
-
-  if (!field) {
-    throw new TypeError('field argument is required')
-  }
-
-  // get fields array
-  var fields = !Array.isArray(field)
-    ? parse(String(field))
-    : field
-
-  // assert on invalid field names
-  for (var j = 0; j < fields.length; j++) {
-    if (!FIELD_NAME_REGEXP.test(fields[j])) {
-      throw new TypeError('field argument contains an invalid header name')
-    }
-  }
-
-  // existing, unspecified vary
-  if (header === '*') {
-    return header
-  }
-
-  // enumerate current values
-  var val = header
-  var vals = parse(header.toLowerCase())
-
-  // unspecified vary
-  if (fields.indexOf('*') !== -1 || vals.indexOf('*') !== -1) {
-    return '*'
-  }
-
-  for (var i = 0; i < fields.length; i++) {
-    var fld = fields[i].toLowerCase()
-
-    // append value (case-preserving)
-    if (vals.indexOf(fld) === -1) {
-      vals.push(fld)
-      val = val
-        ? val + ', ' + fields[i]
-        : fields[i]
-    }
-  }
-
-  return val
-}
-
-/**
- * Parse a vary header into an array.
- *
- * @param {String} header
- * @return {Array}
- * @private
- */
-
-function parse (header) {
-  var end = 0
-  var list = []
-  var start = 0
-
-  // gather tokens
-  for (var i = 0, len = header.length; i < len; i++) {
-    switch (header.charCodeAt(i)) {
-      case 0x20: /*   */
-        if (start === end) {
-          start = end = i + 1
-        }
-        break
-      case 0x2c: /* , */
-        list.push(header.substring(start, end))
-        start = end = i + 1
-        break
-      default:
-        end = i + 1
-        break
-    }
-  }
-
-  // final token
-  list.push(header.substring(start, end))
-
-  return list
-}
-
-/**
- * Mark that a request is varied on a header field.
- *
- * @param {Object} res
- * @param {String|Array} field
- * @public
- */
-
-function vary (res, field) {
-  if (!res || !res.getHeader || !res.setHeader) {
-    // quack quack
-    throw new TypeError('res argument is required')
-  }
-
-  // get existing header
-  var val = res.getHeader('Vary') || ''
-  var header = Array.isArray(val)
-    ? val.join(', ')
-    : String(val)
-
-  // set new header
-  if ((val = append(header, field))) {
-    res.setHeader('Vary', val)
-  }
-}
-
-},{}],76:[function(require,module,exports){
+},{"./EmscriptenWasm.js":70,"./OpusDecoder.js":71,"@wasm-audio-decoders/common":2}],73:[function(require,module,exports){
 /**
  * Copyright 2020 Google LLC
  *
@@ -23130,7 +22645,7 @@ function vary (res, field) {
  * limitations under the License.
  */
 module.exports = Worker;
-},{}],77:[function(require,module,exports){
+},{}],74:[function(require,module,exports){
 (function (global){(function (){
 "use strict";
 
@@ -23158,7 +22673,7 @@ $(function () {
 });
 
 }).call(this)}).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
-},{"icecast-metadata-player":48,"jquery":56}],78:[function(require,module,exports){
+},{"icecast-metadata-player":47,"jquery":55}],75:[function(require,module,exports){
 
 
 // function to set a given theme/color-scheme
@@ -23220,7 +22735,7 @@ function toggleTheme() {
        player.started = 2; 
       }); 
 })();
-},{}],79:[function(require,module,exports){
+},{}],76:[function(require,module,exports){
 /* * 
  * audio visualizer with html5 audio element
  *
@@ -23360,4 +22875,4 @@ $("#play").click(function(){
 
 
 });
-},{}]},{},[77,79,1,78]);
+},{}]},{},[74,76,1,75]);
