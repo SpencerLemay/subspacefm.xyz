@@ -1,5 +1,5 @@
 var cors = require('cors');
-const socket = io.connect('http://localhost:8888', {resource: '/some/path/socket.io'});
+const socket = io.connect('http://subspacefm.xyz', {resource: '/chat'});
 
 
 const messageContainer = document.getElementById('message-container')
