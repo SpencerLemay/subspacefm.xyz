@@ -1,4 +1,10 @@
-const socket = io('http://localhost:3000');
+var cors = require('cors');
+const socket = io('http://localhost:3000', {
+  withCredentials: true,
+  extraHeaders: {
+    "my-custom-header": "abcd"
+  }
+});
 const messageContainer = document.getElementById('message-container')
 const messageForm = document.getElementById('send-container')
 const messageInput = document.getElementById('message-input')
