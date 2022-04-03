@@ -55,6 +55,7 @@ io.on('connection', socket => {
     users.push(user);
     console.log("NEW USER CONNECTED: " + user.name);
     socket.emit('getSession',{name:user.name, sessionid:user.sessionid});
+   socket.emit('help',{message:"Type !help for available commands."})
     messages.forEach(element => {
           socket.emit('chat-message', { message: element.message, name: element.name });
           });
