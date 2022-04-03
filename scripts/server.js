@@ -1,6 +1,6 @@
 const io = require("socket.io")(3000);
 const crypto = require('crypto');
-const users = {}
+const users = [];
 
 /*function timeout(){
 
