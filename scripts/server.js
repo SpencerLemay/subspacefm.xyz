@@ -92,7 +92,7 @@ socket.on('command', incoming => {
            socket.emit('error-message', { message: 'ERROR: No name specified'});
           return;
          }
-       var i = users.findIndex(user);
+       var i = users.indexOf(user);
         users[i].name = incoming.args;
         console.log('User ' + oldname +  'changed name to ' + incoming.args);
         socket.emit('user-name-change', {oldname:oldname, name:incoming.args});
