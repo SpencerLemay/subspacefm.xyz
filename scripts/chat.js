@@ -7,8 +7,20 @@ const messageForm = document.getElementById('send-container')
 const messageInput = document.getElementById('message-input')
 
 //const name = prompt('What is your name?')
+socket.emit('newUser'); 
+
+var sessionid;
 var name = 'default';
 appendMessage('Enter Name')
+
+socket.on('getSession', data => {
+  sessionid = data.sessionid;
+  name = data.name;
+})
+
+socket.on('user-connected',data =>{
+  appendMessage(`Welcome ${data.name}`)
+})
 
 socket.on('chat-message', data => {
   appendMessage(`${data.name}: ${data.message}`)
