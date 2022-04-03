@@ -1,5 +1,5 @@
 var cors = require('cors');
-const socket = io('http://subspacefm.xyz:3000', {
+const socket = io('https://subspacefm.xyz/chat', {
   withCredentials: true,
   extraHeaders: {
     "my-custom-header": "abcd"
