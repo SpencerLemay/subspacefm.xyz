@@ -17,7 +17,7 @@
     --color-primary: rgba(54, 55, 60, 0.72);
     --color-button: #717e80;
     --color-accent: #352c2c;
-    --color-active: lightgrey;
+    --color-active: rgba(54, 55, 60, 0.72);;
     --font-color: #bcbfbc;
     --secondary-font: #bcbfbc;
     --logo: white;
@@ -187,6 +187,8 @@ tr{
 
     #message-container {
       width: 560px;
+      height: 250px;
+      overflow-y:auto
       max-width: 560px;
     }
 

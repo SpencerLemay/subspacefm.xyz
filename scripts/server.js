@@ -55,10 +55,11 @@ io.on('connection', socket => {
     users.push(user);
     console.log("NEW USER CONNECTED: " + user.name);
     socket.emit('getSession',{name:user.name, sessionid:user.sessionid});
-   socket.emit('help',{message:"Type !help for available commands."})
+        socket.emit('help',{message:"Available commands: !changename <name>."})
     messages.forEach(element => {
           socket.emit('chat-message', { message: element.message, name: element.name });
           });
+    socket.emit('help',{message:"Available commands: !changename <name>."})
 
     socket.broadcast.emit('user-connected',{name:user.name});
   })
