@@ -1,5 +1,6 @@
 {
   "dependencies": {
+    "http-proxy": "^1.18.1",
     "icecast-metadata-stats": "^0.1.2",
     "socket.io": "^4.4.1"
   },

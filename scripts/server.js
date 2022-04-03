@@ -1,10 +1,10 @@
-var cors = require('cors');
-const io = require("socket.io")(3000, {
-  cors: {
-    origin: '*',
-    methods: ["GET", "POST"]
-  }
-});
+const httpProxy = require("http-proxy");
+const io = require("socket.io")(httpProxy
+  .createProxyServer({
+    target: "http://localhost:3000",
+    ws: true,
+  })
+  .listen(80);
 
 const users = {}
 
