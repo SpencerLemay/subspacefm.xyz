@@ -1,10 +1,4 @@
-const httpProxy = require("http-proxy");
-const io = require("socket.io")(httpProxy
-  .createProxyServer({
-    target: "http://localhost:3000",
-    ws: true,
-  })
-  .listen(80));
+const io = require("socket.io")(3000);
 
 const users = {}
 

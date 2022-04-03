@@ -1,10 +1,7 @@
 var cors = require('cors');
-const socket = io('https://subspacefm.xyz/chat', {
-  withCredentials: true,
-  extraHeaders: {
-    "my-custom-header": "abcd"
-  }
-});
+const socket = io.connect('http://localhost:8888', {resource: '/some/path/socket.io'});
+
+
 const messageContainer = document.getElementById('message-container')
 const messageForm = document.getElementById('send-container')
 const messageInput = document.getElementById('message-input')
