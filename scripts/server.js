@@ -113,6 +113,7 @@ socket.on('command', incoming => {
     var user = users.find( ({ sessionid }) => sessionid === incoming.sessionid );
     if (user == undefined){
        socket.emit('error-message', { message: 'ERROR: Invalid or expired sessionid, refresh to chat.'});
+       return;
     }
   	console.log("DISCONNECTED "+ user.name);
     socket.broadcast.emit('user-disconnected', user.name);
