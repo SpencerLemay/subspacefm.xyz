@@ -169,6 +169,7 @@ tr{
 }
 
 .chatbox{
+  width:  400px;
   display: grid;
   justify-content: center;
   margin: auto;
@@ -188,24 +189,16 @@ tr{
     }
 
     #message-container div {
-      background-color: #CCC;
+      background-color: var(--logo);
       padding: 5px;
     }
 
     #message-container div:nth-child(2n) {
-      background-color: #FFF;
+      background-color: var(--color-button);;
     }
 
     #send-container {
-      position: fixed;
-      padding-bottom: 30px;
-      bottom: 0;
-      background-color: white;
-      max-width: 1200px;
-      width: 80%;
-      display: flex;
     }
 
     #message-input {
-      flex-grow: 1;
     }
