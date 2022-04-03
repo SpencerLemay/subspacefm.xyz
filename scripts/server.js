@@ -34,10 +34,10 @@ io.on('connection', socket => {
    var sessionid = getSessionid();
    var username = getUserName();
     var user = {
-      name: name;
-      sessionid: sessionid;
-      pwhash: '';
-      ttl: 30; //minutes
+      name: name,
+      sessionid: sessionid,
+      pwhash: '',
+      ttl: 30 //minutes
     }
 
     users.push(user);
