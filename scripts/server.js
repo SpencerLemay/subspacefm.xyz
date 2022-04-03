@@ -2,9 +2,20 @@ const io = require("socket.io")(3000);
 const crypto = require('crypto');
 const users = [];
 var messages = [];
-/*function timeout(){
 
-}*/
+
+var timeout = setInterval(function() {
+  users.forEach(element => {
+       element.ttl--;
+       if (element.ttl < 1){
+        console.log("TIMED OUT "+ element.name);
+        socket.broadcast.emit('user-disconnected', user.name);
+        var i = users.findIndex(element);
+        users.splice(i,i);
+       }
+
+  });    
+}, 60 * 1000);
 
 var getSessionid = function() {
     // 16 bytes is likely to be more than enough,
@@ -75,6 +86,7 @@ socket.on('command', incoming => {
        socket.emit('error-message', { message: 'ERROR: Invalid or expired sessionid, refresh to chat.'});
        return;
     }
+    user.ttl = 30;
     console.log("COMMAND ISSUED " + incoming.cmd +'.');
    if (incoming.cmd === 'changename'){
        var oldname = user.name;
@@ -123,6 +135,8 @@ socket.on('command', incoming => {
         console.log("NEW USER CONNECTED: " + user.name);
         socket.emit('getSession',{name:user.name, sessionid:user.sessionid});         
     }
+
+    user.ttl = 30;
 
 	 console.log(user.name + " SAID: " + incoming.message);
     socket.broadcast.emit('chat-message', { message: incoming.message, name: user.name });
