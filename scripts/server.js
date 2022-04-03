@@ -4,7 +4,7 @@ const io = require("socket.io")(httpProxy
     target: "http://localhost:3000",
     ws: true,
   })
-  .listen(80);
+  .listen(80));
 
 const users = {}
 
