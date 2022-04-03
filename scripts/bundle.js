@@ -37,17 +37,13 @@ socket.on('user-disconnected', name => {
 
 messageForm.addEventListener('submit', e => {
   e.preventDefault()
-  
-  if  (name === 'default'){
-        name = messageInput.value 
-        socket.emit('new-user', name) 
-        appendMessage('Welcome  ' +  name);
-        messageInput.value = '' 
-        return;
-       }
-  const message = messageInput.value
-  appendMessage(`You: ${message}`)
-  socket.emit('send-chat-message', message)
+  var outgoing = {
+      sessionid: sessionid,
+      message: messageInput.value
+  }
+
+  appendMessage(`You: ${outgoing.message}`)
+  socket.emit('send-chat-message', outgoing)
   messageInput.value = ''
 })
 

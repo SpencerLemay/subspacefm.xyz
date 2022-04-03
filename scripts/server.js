@@ -16,11 +16,11 @@ var getSessionid = function() {
 
 function getUserName(username) {
   if (username == undefined){
-      username = 'Guest' +  Math.random() * 10000;
+      username = 'Guest' +  Math.floor(Math.random() * 10000);
   }
   users.forEach(element => {
        if (element.name === username) {
-           getUserName(username);
+           username = getUserName(username);
        }
   });
   return username;
@@ -51,9 +51,10 @@ socket.on('claim-user', request => {
 })
 
 
-  socket.on('send-chat-message', message => {
-	 console.log(users[socket.id] + " SAID: " + message);
-    socket.broadcast.emit('chat-message', { message: message, name: users[socket.id] });
+  socket.on('send-chat-message', incoming => {
+    var user = users.find( ({ sessionid }) => sessionid === incoming.sessionid );
+	 console.log(user.name + " SAID: " + incoming.message);
+    socket.broadcast.emit('chat-message', { message: incoming.message, name: user.name });
 
   })
   socket.on('disconnect', () => {
