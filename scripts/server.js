@@ -104,8 +104,10 @@ socket.on('command', incoming => {
   socket.on('send-chat-message', incoming => {
     var user = users.find( ({ sessionid }) => sessionid === incoming.sessionid );
     if (user == undefined){
-        console.log("NEW USER CONNECTED: " + name);
-        socket.emit('getSession',{name:name, sessionid:sessionid});         
+        var user = newUser(incoming);
+
+        console.log("NEW USER CONNECTED: " + user.name);
+        socket.emit('getSession',{name:user.name, sessionid:user.sessionid});         
     }
 
 	 console.log(user.name + " SAID: " + incoming.message);
