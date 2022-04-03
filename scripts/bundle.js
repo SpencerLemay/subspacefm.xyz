@@ -47,7 +47,7 @@ messageForm.addEventListener('submit', e => {
    //Commands
    if   (messageInput.value[0] == '!')
          {
-         var str = messageInput.value[0];
+         var str = messageInput.value;
          var i = str.search(' ')
          var cmd = str.substring(1, i)
          argument = str.substring(i,str.length);
