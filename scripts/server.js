@@ -1,17 +1,18 @@
 const io = require("socket.io")(3000);
-
+const crypto = require('crypto');
 const users = {}
 
 /*function timeout(){
 
 }*/
 
-function uuidv4() {
-  return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function(c) {
-    var r = Math.random() * 16 | 0, v = c == 'x' ? r : (r & 0x3 | 0x8)
-    return v.toString(16)
-  })
-}
+var getSessionid = function() {
+    // 16 bytes is likely to be more than enough,
+    // but you may tweak it to your needs
+    return crypto.randomBytes(16).toString('base64');
+};
+
+
 
 function getUserName(username) {
   if (username == undefined){
@@ -30,7 +31,7 @@ io.on('connection', socket => {
    
   //isBanned(socket);
 
-   var sessionid = uuidv4();
+   var sessionid = getSessionid();
    var username = getUserName();
     var user = {
       name: name;
