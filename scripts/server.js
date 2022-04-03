@@ -69,6 +69,7 @@ socket.on('command', incoming => {
     if (user == undefined){
        socket.emit('error-message', { message: 'ERROR: Invalid or expired sessionid, refresh to chat.'});
     }
+    console.log("COMMAND ISSUED " + incoming.cmd);
    if (incoming.cmd === 'changename'){
        var oldname = user.name;
     
