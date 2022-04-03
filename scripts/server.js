@@ -1,11 +1,4 @@
-const io = require("socket.io")(httpServer, {
-  cors: {
-    origin: "http://localhost:8080",
-    methods: ["GET", "POST"]
-  }
-});
-
-httpServer.listen(3000);
+const io = require("socket.io")(3000);
 
 const users = {}
 
