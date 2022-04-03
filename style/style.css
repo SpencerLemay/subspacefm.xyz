@@ -191,12 +191,12 @@ tr{
     }
 
     #message-container div {
-      background-color: var(--logo);
+      background-color: var(--color-button);
       padding: 5px;
     }
 
     #message-container div:nth-child(2n) {
-      background-color: var(--color-active);;
+      background-color: var(--color-active);
     }
 
     #send-container {
