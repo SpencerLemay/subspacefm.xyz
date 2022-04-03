@@ -188,7 +188,7 @@ tr{
     #message-container {
       width: 560px;
       height: 250px;
-      overflow-y:auto
+      overflow-y: auto;
       max-width: 560px;
     }
 
