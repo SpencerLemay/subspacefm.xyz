@@ -101,7 +101,7 @@ socket.on('command', incoming => {
        }
    if (incoming.cmd === 'help')
        {
-        socket.emit('help',message:"Available commands: !changename <name>.")
+        socket.emit('help',{message:"Available commands: !changename <name>."})
         return
        }
 
