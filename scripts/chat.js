@@ -28,7 +28,9 @@ messageForm.addEventListener('submit', e => {
   if  (name === 'default'){
         name = messageInput.value 
         socket.emit('new-user', name) 
-        appendMessage('Welcome  ' +  name); 
+        appendMessage('Welcome  ' +  name);
+        messageInput.value = '' 
+        return;
        }
   const message = messageInput.value
   appendMessage(`You: ${message}`)
