@@ -9,7 +9,7 @@ var timeout = setInterval(function() {
        element.ttl--;
        if (element.ttl < 1){
         console.log("TIMED OUT "+ element.name);
-        socket.broadcast.emit('user-disconnected', user.name);
+        //socket.broadcast.emit('user-disconnected', user.name);
         var i = users.findIndex(element);
         users.splice(i,i);
        }
