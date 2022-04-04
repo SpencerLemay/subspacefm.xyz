@@ -8,7 +8,6 @@ socket.emit('newUser');
 
 var sessionid;
 
-$("#message-container").scrollTop($("#message-container")[0].scrollHeight);
 
 
 socket.on('getSession', data => {
@@ -80,4 +79,5 @@ function appendMessage(message) {
   const messageElement = document.createElement('div')
   messageElement.innerText = message
   messageContainer.append(messageElement)
+  $("#message-container").scrollTop($("#message-container")[0].scrollHeight);
 }
