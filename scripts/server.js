@@ -4,7 +4,7 @@ const users = [];
 var messages = [];
 
 
-var timeout = setInterval(function() {
+/*var timeout = setInterval(function() {
   users.forEach(element => {
        element.ttl--;
        if (element.ttl < 1){
@@ -15,7 +15,7 @@ var timeout = setInterval(function() {
        }
 
   });    
-}, 60 * 1000);
+}, 60 * 1000);*/
 
 var getSessionid = function() {
     // 16 bytes is likely to be more than enough,
