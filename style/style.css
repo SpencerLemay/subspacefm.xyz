@@ -202,7 +202,10 @@ tr{
     }
 
     #send-container {
+      width:  400px;
+
     }
 
     #message-input {
+      background-color: var(--color-button);
     }
