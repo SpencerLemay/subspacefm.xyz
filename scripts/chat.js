@@ -8,8 +8,7 @@ socket.emit('newUser');
 
 var sessionid;
 
-/*var objDiv = document.getElementById("messageContainer");
-objDiv.scrollTop = objDiv.scrollHeight;*/
+$("#message-container").scrollTop($("#message-container")[0].scrollHeight);
 
 
 socket.on('getSession', data => {
